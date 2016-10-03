@@ -5,8 +5,8 @@ package homework3;
  */
 public class ChestieFinalaTreiBucati {
     String propozitie;
-    TrecereInAscii trecereInAscii = new TrecereInAscii(propozitie);
-    int [] sirFinalDeAscii ;
+    TrecereInAscii trecereInAscii = new TrecereInAscii("Ana are mere, Maria are pere si Marian e baiat");
+    int [] sirFinalDeAscii = trecereInAscii.transformare();
     String string = "";
 
 
@@ -21,7 +21,7 @@ public class ChestieFinalaTreiBucati {
     public char[] primaBucata(){
         char[] sirDeCifre = transformareInSirDeCifre();
         char[] finalOne = new char[sirDeCifre.length/2];
-        for (int i = 1; i< sirDeCifre.length; i++ ){
+        for (int i = 0; i< sirDeCifre.length; i++ ){
             if(i%3 == 0){
                 finalOne[i/3] = sirDeCifre[i];
             }
@@ -30,25 +30,43 @@ public class ChestieFinalaTreiBucati {
     }
 
     public char[] aDouaBucata(){
-        char[] sirDeCifre = transformareInSirDeCifre();
-        char[] semifinalTwo = new char[sirDeCifre.length/2];
-        char [] finalTwo = new char[sirDeCifre.length/2];
-        for (int i = 1; i< sirDeCifre.length; i++ ){
-            if(i%3 == 1){
-                semifinalTwo[i] = sirDeCifre[i];
-            }
+        char[] sirDeCifre2 = transformareInSirDeCifre();
+        char[] semifinalTwo = new char[sirDeCifre2.length];
+        char [] finalTwo = new char[sirDeCifre2.length];
+        for (int i = 0; i< sirDeCifre2.length; i++ ){
+            if(i%3 == 1)
+                semifinalTwo[i/3] = sirDeCifre2[i];
+
         }
-        for(int i = 1; i<semifinalTwo.length;i++ )
-            if(sirDeCifre[i]%2==1){
-                finalTwo[i/3] = semifinalTwo[i];
+        int j=0;
+        for(int i = 0; i<semifinalTwo.length;i++ )
+            if(semifinalTwo[i]%2==1){
+                finalTwo[j] = semifinalTwo[i];
+                j++;
             }
         return finalTwo;
 
     }
-    public void aTreiaBucata(){
+    public char[] aTreiaBucata(){
+        char[] sirDeCifre3 = transformareInSirDeCifre();
+        int[] semifinal3 = new int[sirDeCifre3.length];
+        char [] final3 = new char[sirDeCifre3.length];
+        int j=0;
+        for (int i =0; i< sirDeCifre3.length; i++){
+            if(i%3 == 2)
+            {
+                semifinal3[j] = sirDeCifre3[i] + 65;
+                j++;
+            }
+        }
+        for (int i=0; i< semifinal3.length; i++){
+            final3[i]=(char)semifinal3[i];
+        }
+        return final3;
+    }
+    public String chestieFinala(){
+        return primaBucata() + " " + aDouaBucata() + " " + aTreiaBucata();
 
     }
-    public void chestieFinala(){
 
-    }
 }

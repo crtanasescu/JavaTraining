@@ -11,6 +11,7 @@ public class TrecereInAscii {
     int [] vectorAscii ;
 
 
+
     public TrecereInAscii(String propozitie) {
         this.sirCaracterePropozitie = propozitie.toCharArray();
     }
