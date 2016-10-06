@@ -11,7 +11,12 @@ public class Main {
         for (int i = 0; i<sirFinalDeAscii.length;i++ ){
         System.out.print(sirFinalDeAscii[i]+ " "); }
        ChestieFinalaTreiBucati chestieFinalaTreiBucati = new ChestieFinalaTreiBucati();
-//        System.out.println(chestieFinalaTreiBucati.transformareInSirDeCifre());
+        System.out.println(" ");
+        System.out.println(chestieFinalaTreiBucati.transformareInSirDeCifre());
+        System.out.println(chestieFinalaTreiBucati.primaBucata());
+        System.out.println(chestieFinalaTreiBucati.aDouaBucata());
+        System.out.println(chestieFinalaTreiBucati.aTreiaBucata());
+        System.out.println(chestieFinalaTreiBucati.chestieFinala());
 
     }
 
