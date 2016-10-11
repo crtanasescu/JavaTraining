@@ -10,8 +10,16 @@ public class Main {
         OperatiiPeVectori operatiiPeVectori = new OperatiiPeVectori(vector);
 
         operatiiPeVectori.printareVector(vector);
-        operatiiPeVectori.adaugareElement(100,5);
+        operatiiPeVectori.eliminareElement1(5);
+        operatiiPeVectori.eliminareElement1(4);
         operatiiPeVectori.eliminareElementCuRedimensionare(5);
-        operatiiPeVectori.eliminareElement(4);
+        operatiiPeVectori.eliminareElementCuRedimensionare(3);
+        operatiiPeVectori.eliminareElementCuRedimensionare(1);
+        operatiiPeVectori.adaugareElement(100,2);
+        operatiiPeVectori.adaugareElement(100,2);
+        operatiiPeVectori.eliminareElement1(4);
+        operatiiPeVectori.eliminareElement1(0);
+
+
     }
 }

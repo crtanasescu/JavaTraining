@@ -36,6 +36,7 @@ public class OperatiiPeVectori {
             vectorNou[i] = vector[i];
         }
         printareVector(vectorNou);
+        this.vector = vectorNou;
     }
 
 
@@ -49,6 +50,27 @@ public class OperatiiPeVectori {
             }
         }
         printareVector(vector);
+    }
+
+    public void eliminareElement1(int index){
+        int n = vector.length;
+        int[] vectorNou = new int[n];
+        for (int i = 0; i < vector.length; i++) {
+            if (i == index && i!=n-1) {
+
+                for (int j = i + 1; j < vector.length - 1; j++) {
+                    vectorNou[j] = vector[j + 1];
+                }
+                vectorNou[index] = -1;
+                break;
+            }else if(i==index && i==n-1){
+                vectorNou[index] = -1;
+                break;
+            }
+            vectorNou[i] = vector[i];
+        }
+        printareVector(vectorNou);
+        this.vector = vectorNou;
     }
 
 
@@ -68,6 +90,7 @@ public class OperatiiPeVectori {
             vectorNou[i] = vector[i];
         }
         printareVector(vectorNou);
+        this.vector = vectorNou;
     }
 
 

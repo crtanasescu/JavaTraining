@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) {
-        ArrayList<Carte> carti = new ArrayList<>();
+        ArrayList<Carte> carti = new ArrayList();
 
         Scanner s = new Scanner(System.in);
         System.out.println("Intruduceti numarul de carti pentru care veti indtroduce date:");
