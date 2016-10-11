@@ -9,13 +9,9 @@ public class Main {
         int [] vector = {10,11,12,13,14,15};
         OperatiiPeVectori operatiiPeVectori = new OperatiiPeVectori(vector);
 
-        operatiiPeVectori.printareVector();
-       // operatiiPeVectori.adaugareElement(9,2);
-      //  operatiiPeVectori.eliminareElementCuRedimensionare(1);
-        operatiiPeVectori.eliminareElement(5);
-
-       // vector = ArrayUtils.removeElement(vector, index);
+        operatiiPeVectori.printareVector(vector);
+        operatiiPeVectori.adaugareElement(100,5);
+        operatiiPeVectori.eliminareElementCuRedimensionare(5);
+        operatiiPeVectori.eliminareElement(4);
     }
-
-
 }
