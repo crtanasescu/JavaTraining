@@ -73,11 +73,13 @@ public class ChestieFinalaTreiBucati {
             j++;
         }
         return new String(vectorFinal);
-
-
     }
 
-
-
-
+    public String finalEu(char[] vectorMic, int index, char [] vectorMare){
+        for (int i = 0 ; i < vectorMic.length; i++){
+            vectorMare[index] = vectorMic[i];
+            index++;
+        }
+        return new String(vectorMare);
+    }
 }

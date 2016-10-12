@@ -7,12 +7,13 @@ public class OperatiiPeVectori {
 
     int[] vector = new int[10];
 
+
     public OperatiiPeVectori(int[] vector) {
         this.vector = vector;
     }
 
 
-    public void printareVector(int [] vector) {
+    public void printareVector() {
         for (int i = 0; i < vector.length; i++) {
             System.out.print(vector[i] + " ");
 
@@ -35,31 +36,19 @@ public class OperatiiPeVectori {
             }
             vectorNou[i] = vector[i];
         }
-        printareVector(vectorNou);
         this.vector = vectorNou;
+        printareVector();
+
     }
 
 
-    public void eliminareElement(int index) {
-        for (int i = 0; i < vector.length; i++) {
-            if (i == index) {
-                vector[index] = -1;
-                for (int j = i + 1; j < vector.length - 1; j++) {
-                    vector[j] = vector[j + 1];
-                }
-            }
-        }
-        printareVector(vector);
-    }
-
-    public void eliminareElement1(int index){
+    public void eliminareElement(int index){
         int n = vector.length;
         int[] vectorNou = new int[n];
         for (int i = 0; i < vector.length; i++) {
             if (i == index && i!=n-1) {
-
-                for (int j = i + 1; j < vector.length - 1; j++) {
-                    vectorNou[j] = vector[j + 1];
+                for (int j = i + 1; j < vector.length; j++) {
+                    vectorNou[j] = vector[j];
                 }
                 vectorNou[index] = -1;
                 break;
@@ -69,8 +58,8 @@ public class OperatiiPeVectori {
             }
             vectorNou[i] = vector[i];
         }
-        printareVector(vectorNou);
         this.vector = vectorNou;
+        printareVector();
     }
 
 
@@ -89,10 +78,8 @@ public class OperatiiPeVectori {
             }
             vectorNou[i] = vector[i];
         }
-        printareVector(vectorNou);
         this.vector = vectorNou;
+        printareVector();
     }
-
-
 
 }
