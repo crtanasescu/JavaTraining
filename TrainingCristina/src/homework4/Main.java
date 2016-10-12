@@ -6,8 +6,11 @@ package homework4;
 public class Main {
 
     public static void main(String[] args) {
+
+        //clasa primeste in constructor un vector de numere pe care il foloseste ulterior pt diferite operatii
         int [] vector = {10,11,12,13,14,15};
-        OperatiiPeVectori operatiiPeVectori = new OperatiiPeVectori(vector);  //clasa primeste in constructor un vector de numere pe care il foloseste ulterior pt diferite operatii
+        OperatiiPeVectori operatiiPeVectori = new OperatiiPeVectori(vector);
+
 
 
         /*
