@@ -23,8 +23,8 @@ public class Main {
 //        mate.scadere(a,b);
 //        mate.adunare(a,b);
 
-        int[] b = {2,3,5};
-        int[] a = {1,9};
+        int[] a = {2,3,5};
+        int[] b = {1,9};
         Mate mate = new Mate(a,b);
         System.out.println(mate.inmultire(a,b));
 

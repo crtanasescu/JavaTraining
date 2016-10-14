@@ -21,19 +21,20 @@ public class Main {
         -adaugareElement- adauga elementul dat pe pozitia data, redimensionandu se vectorul
          */
         operatiiPeVectori.printareVector();
-        operatiiPeVectori.eliminareElement(3);
-        operatiiPeVectori.eliminareElement(4);
+//        operatiiPeVectori.eliminareElement(3);
+//        operatiiPeVectori.eliminareElement(4);
         operatiiPeVectori.eliminareElement(5);
-        operatiiPeVectori.eliminareElementCuRedimensionare(5);
+        operatiiPeVectori.adaugareElement(100,1);
+//        operatiiPeVectori.eliminareElementCuRedimensionare(5);
+        operatiiPeVectori.eliminareElementCuRedimensionare(4);
         operatiiPeVectori.eliminareElementCuRedimensionare(3);
-        operatiiPeVectori.eliminareElementCuRedimensionare(1);
-        operatiiPeVectori.adaugareElement(100,2);
+//        operatiiPeVectori.adaugareElement(100,2);
         operatiiPeVectori.adaugareElement(101,2);
-        operatiiPeVectori.adaugareElement(102,0);
-        operatiiPeVectori.eliminareElement(4);
-        operatiiPeVectori.eliminareElement(0);
-        operatiiPeVectori.eliminareElementCuRedimensionare(5);
-        operatiiPeVectori.printareVector();
+//        operatiiPeVectori.adaugareElement(102,0);
+//        operatiiPeVectori.eliminareElement(4);
+//        operatiiPeVectori.eliminareElement(0);
+//        operatiiPeVectori.eliminareElementCuRedimensionare(5);
+//        operatiiPeVectori.printareVector();
 
 
     }

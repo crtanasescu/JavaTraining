@@ -5,37 +5,33 @@ package homework4;
  */
 public class OperatiiPeVectori {
 
-    int[] vector = new int[10];
-
+    int[] vector;
+    int elementeFolositoare;
 
     public OperatiiPeVectori(int[] vector) {
         this.vector = vector;
+        this.elementeFolositoare = vector.length;
     }
 
 
     public void printareVector() {
         for (int i = 0; i < vector.length; i++) {
             System.out.print(vector[i] + " ");
-
         }
         System.out.println();
     }
 
 
     public void eliminareElementCuRedimensionare(int index){
-        int n = vector.length;
-        int [] vectorNou = new int[n-1];
-        for (int i=0; i<n; i++){
-            if (i == index){
-              int k = i;
-                for(int j = i; j <vector.length-1; j++) {
-                    vectorNou[k] = vector[j+1];
-                    k++;
-                }
-                break;
-            }
+        int [] vectorNou = new int[elementeFolositoare-1];
+
+        for (int i=0; i<index; i++) {
             vectorNou[i] = vector[i];
         }
+        for(int j = index; j < elementeFolositoare-1; j++) {
+            vectorNou[j] = vector[j+1];
+        }
+        elementeFolositoare--;
         this.vector = vectorNou;
         printareVector();
 
@@ -43,42 +39,39 @@ public class OperatiiPeVectori {
 
 
     public void eliminareElement(int index){
-        int n = vector.length;
-        int[] vectorNou = new int[n];
-        for (int i = 0; i < vector.length; i++) {
-            if (i == index && i!=n-1) {
-                for (int j = i + 1; j < vector.length; j++) {
-                    vectorNou[j] = vector[j];
-                }
-                vectorNou[index] = -1;
-                break;
-            }else if(i==index && i==n-1){
-                vectorNou[index] = -1;
-                break;
-            }
-            vectorNou[i] = vector[i];
+        for (int j = index; j < vector.length - 1; j++) {
+            vector[j] = vector[j+1];
         }
-        this.vector = vectorNou;
+        vector[vector.length-1] = -1;
+        elementeFolositoare--;
         printareVector();
     }
 
 
     public void adaugareElement(int element, int index) {
         int n = vector.length;
-        int[] vectorNou = new int[n + 1];
-        int k = vectorNou.length;
-        for (int i = 0; i < n; i++) {
-            if (i == index) {
-                for (int j = vector.length-1; j >= i; j--) {
-                    vectorNou[k-1] = vector[j];
-                    k--;
-                }
-                vectorNou[index] = element;
-                break;
+        int[] vectorNou;
+
+
+        if(elementeFolositoare != n){
+             for(int i = vector.length-1; i>= index ; i--){
+                 vector[i] = vector[i-1];
+             }
+            vector[index] = element;
+        }else {
+            vectorNou = new int[n + 1];
+            for (int i = 0; i < index; i++) {
+                vectorNou[i] = vector[i];
             }
-            vectorNou[i] = vector[i];
+            int k = vectorNou.length;
+            for (int j = vector.length-1; j >= index; j--,k--) {
+                vectorNou[k-1] = vector[j];
+            }
+            vectorNou[index] = element;
+            this.vector = vectorNou;
         }
-        this.vector = vectorNou;
+
+        elementeFolositoare++;
         printareVector();
     }
 
