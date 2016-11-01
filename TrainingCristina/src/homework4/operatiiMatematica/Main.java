@@ -25,16 +25,28 @@ public class Main {
 
 ///////////////////////////////////////////////////////////////
 
-//        int [] a = {8,9,9,3,7};
-//        int [] b = {1,9,3,8,5};
+//        int [] a = {6,9,8,9,9,2};
+//        int [] b = {7,9,8,8,4,8,0};
 //
 //        MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
 //        mate.adunareFaraRedimensionare(a,b);
 
-        int [] a = {9,9,8,7};
-        int [] b = {9,9,8,5,6};
+//        int [] a = {9,9,8,7};
+//        int [] b = {9,9,8,5,6};
+//
+//        MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
+//        mate.scadereFaraRedimensionare(a,b);
+
+//
+//        int [] a = {9,9,8,7};
+//        int [] b = {9,9,8,5,6};
+//
+//        MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
+//        mate.inmultireFaraRedimensionare(a,b);
+        int [] a = {1,4,7,6};
+        int [] b = {1,2};
 
         MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
-        mate.scadereFaraRedimensionare(a,b);
+        mate.impartireFaraRedimensionare(a,b);
     }
 }

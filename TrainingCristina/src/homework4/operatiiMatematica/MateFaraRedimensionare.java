@@ -13,7 +13,7 @@ public class MateFaraRedimensionare {
         this.b = b;
     }
 
-    public void adunareFaraRedimensionare (int [] a, int [] b){
+    public int[] adunareFaraRedimensionare (int [] a, int [] b){
 
         int dif = Math.abs(a.length-b.length);
         int tinemMinte = 0;
@@ -40,6 +40,7 @@ public class MateFaraRedimensionare {
         }else{
             afisare(redimensionareVector(vectorRezultat));
         }
+        return vectorRezultat;
     }
 
     public void scadereFaraRedimensionare(int[] a, int[] b){
@@ -72,6 +73,70 @@ public class MateFaraRedimensionare {
         }else {
             afisare(vectorRezultat);
         }
+    }
+
+    public void inmultireFaraRedimensionare(int[] a, int[] b) {
+        int acumulator[] = null;
+        int max[] = maxim(a,b);
+        int min[] = minim(a,b);
+        for (int i = min.length - 1; i >= 0; i--) {
+            int[] rezultatIntermediar = new int[max.length +1];
+            int lungime = rezultatIntermediar.length - 1;
+            int tineMinte = 0;
+            for (int j = max.length - 1; j >= 0; j--) {
+                int rezultat = (max[j] * min[i] + tineMinte) % 10;
+                tineMinte = (max[j] * min[i] + tineMinte) / 10;
+                rezultatIntermediar[lungime] = rezultat;
+                lungime -= 1;
+                if (j == 0) {
+                    rezultatIntermediar[lungime] = tineMinte;
+                }
+            }
+            rezultatIntermediar = redimensionareVector(rezultatIntermediar);
+            if(min.length == 1){afisare(rezultatIntermediar);}
+            if(acumulator == null){
+                acumulator  = new int[a.length + b.length];
+                int lungimeAcumulator = acumulator.length -1;
+                for(int z=rezultatIntermediar.length-1; z>=0; z--){
+                acumulator[lungimeAcumulator] = rezultatIntermediar[z];
+                    lungimeAcumulator--;
+                }
+                acumulator = redimensionareMulteSpatiiVector(acumulator);
+            }else{
+                int[] rezultatIntermediarNou = incrementareZero(rezultatIntermediar);
+                acumulator = adunareFaraRedimensionare(acumulator,rezultatIntermediarNou);
+                acumulator = redimensionareMulteSpatiiVector(acumulator);
+            }
+        }
+    }
+
+    public void impartireFaraRedimensionare(int[] a, int[] b){
+        int max[] = maxim(a,b);
+        int min[] = minim(a,b);
+        int lungimePentruFormareNumar = min.length;
+        int deimpartit = 0;
+        for(int i=0; i<lungimePentruFormareNumar-1; i++){
+             deimpartit = max[i]*10 + max[i+1];
+        }
+        int impartitor = 0;
+        for(int j=0; j<lungimePentruFormareNumar-1; j++){
+            impartitor = min[j]*10 + min[j+1];
+        }
+        int rest = 0;
+        int cat = (deimpartit / impartitor) - rest;
+        //int noulDeimpartit = (deimpartit-impartitor)*10 ;
+    }
+
+    int index = 1;
+    public int[] incrementareZero(int [] rezultatIntermediar){
+        int [] rezultatIntermediarNou = new int[rezultatIntermediar.length + index] ;
+        int k=0;
+        for(int s=0; s<=rezultatIntermediar.length-1;s++){
+            rezultatIntermediarNou[k]= rezultatIntermediar[s];
+            k++;
+        }
+        index ++;
+        return rezultatIntermediarNou;
     }
 
     public int[] maxim (int [] a, int [] b){
@@ -126,11 +191,15 @@ public class MateFaraRedimensionare {
     }
 
     public int[] redimensionareVector(int [] vectorRezultat){
-        int [] vectorNou = new int [vectorRezultat.length -1];
-        for(int i = 0; i < vectorNou.length; i++){
-            vectorNou[i] = vectorRezultat[i+1];
+        int [] vectorNou = new int [vectorRezultat.length-1];
+        if(vectorRezultat[0] == 0) {
+            for (int i = 0; i < vectorNou.length; i++) {
+                vectorNou[i] = vectorRezultat[i + 1];
+            }
+            return vectorNou;
+        }else{
+            return vectorRezultat;
         }
-        return vectorNou;
     }
 
     public int[] redimensionareMulteSpatiiVector(int[] vectorRezultat){
