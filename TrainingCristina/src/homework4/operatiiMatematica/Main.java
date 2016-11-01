@@ -23,11 +23,18 @@ public class Main {
 //        mate.scadere(a,b);
 //        mate.adunare(a,b);
 
-//
+///////////////////////////////////////////////////////////////
 
-        int [] a = {};
-        int [] b = {};
+//        int [] a = {8,9,9,3,7};
+//        int [] b = {1,9,3,8,5};
+//
+//        MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
+//        mate.adunareFaraRedimensionare(a,b);
+
+        int [] a = {9,9,8,7};
+        int [] b = {9,9,8,5,6};
 
         MateFaraRedimensionare mate = new MateFaraRedimensionare(a,b);
+        mate.scadereFaraRedimensionare(a,b);
     }
 }
