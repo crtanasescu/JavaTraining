@@ -5,13 +5,8 @@ package homework4.operatiiMatematica;
  */
 public class MateFaraRedimensionare {
 
-    int[] a;
-    int[] b;
 
-    public MateFaraRedimensionare(int[] a, int[] b) {
-        this.a = a;
-        this.b = b;
-    }
+    public MateFaraRedimensionare() { }
 
     public int[] adunareFaraRedimensionare (int [] a, int [] b){
 
@@ -21,19 +16,21 @@ public class MateFaraRedimensionare {
         int min[] = minim(a,b);
         int[] vectorRezultat = new int[max.length + 1];
 
+        //parcurgere vector mic
         for(int i = min.length-1; i>=0; i--){
             int raspuns = min[i] + max[i+dif] + tinemMinte;
             vectorRezultat[i + dif + 1] = raspuns % 10;
             tinemMinte = raspuns/10;
-            if (tinemMinte == 1 && i + dif == 0){
-                vectorRezultat[0] = 1;
-            }
         }
+
+        //pargurgere diferenta din vector mare
         for ( int i = dif-1 ; i>= 0 ; i--){
             int raspuns = max[i] + tinemMinte;
             vectorRezultat[i+1] = raspuns % 10;
             tinemMinte = raspuns/10;
         }
+
+        //in cazul in care avem un 1 tinut minte
         if (tinemMinte == 1){
             vectorRezultat[0] = 1;
             afisare(vectorRezultat);
@@ -45,28 +42,26 @@ public class MateFaraRedimensionare {
 
     public void scadereFaraRedimensionare(int[] a, int[] b){
         int dif = Math.abs(a.length-b.length);
-        int neimprumutam = 0;
+        int neImprumutam = 0;
         int max[] = maxim(a,b);
         int min[] = minim(a,b);
         int[] vectorRezultat = new int[max.length];
         int j = max.length - 1;
 
-        for(int i = min.length - 1 ; i>=0; i--){
-            int raspuns = max[i+dif] - min[i] - neimprumutam;
+        for(int i = min.length - 1 ; i>=0; i--, j--){
+            int raspuns = max[i+dif] - min[i] - neImprumutam;
             if(raspuns >= 0){
                 vectorRezultat[j] = raspuns;
-                neimprumutam = 0;
-                j--;
+                neImprumutam = 0;
             }else{
-                vectorRezultat[j]= (max[i+dif] + 10) - min[i] - neimprumutam;
-                neimprumutam = 1;
-                j--;
+                vectorRezultat[j]= (max[i+dif] + 10) - min[i] - neImprumutam;
+                neImprumutam = 1;
             }
         }
 
         for(int i = dif-1; i>=0; i--){
-            vectorRezultat[i] = max[i] - neimprumutam;
-            neimprumutam = 0;
+            vectorRezultat[i] = max[i] - neImprumutam;
+            neImprumutam = 0;
         }
         if (vectorRezultat[0] == 0){
             afisare(redimensionareMulteSpatiiVector(vectorRezultat));
@@ -79,8 +74,9 @@ public class MateFaraRedimensionare {
         int acumulator[] = null;
         int max[] = maxim(a,b);
         int min[] = minim(a,b);
+        int[] rezultatIntermediar = null;
         for (int i = min.length - 1; i >= 0; i--) {
-            int[] rezultatIntermediar = new int[max.length +1];
+            rezultatIntermediar = new int[max.length +1];
             int lungime = rezultatIntermediar.length - 1;
             int tineMinte = 0;
             for (int j = max.length - 1; j >= 0; j--) {
@@ -89,16 +85,15 @@ public class MateFaraRedimensionare {
                 rezultatIntermediar[lungime] = rezultat;
                 lungime -= 1;
                 if (j == 0) {
-                    rezultatIntermediar[lungime] = tineMinte;
+                    rezultatIntermediar[0] = tineMinte;
                 }
             }
             rezultatIntermediar = redimensionareVector(rezultatIntermediar);
-            if(min.length == 1){afisare(rezultatIntermediar);}
             if(acumulator == null){
                 acumulator  = new int[a.length + b.length];
                 int lungimeAcumulator = acumulator.length -1;
                 for(int z=rezultatIntermediar.length-1; z>=0; z--){
-                acumulator[lungimeAcumulator] = rezultatIntermediar[z];
+                    acumulator[lungimeAcumulator] = rezultatIntermediar[z];
                     lungimeAcumulator--;
                 }
                 acumulator = redimensionareMulteSpatiiVector(acumulator);
@@ -106,8 +101,10 @@ public class MateFaraRedimensionare {
                 int[] rezultatIntermediarNou = incrementareZero(rezultatIntermediar);
                 acumulator = adunareFaraRedimensionare(acumulator,rezultatIntermediarNou);
                 acumulator = redimensionareMulteSpatiiVector(acumulator);
+                return;
             }
         }
+        afisare(rezultatIntermediar);
     }
 
     public void impartireFaraRedimensionare(int[] a, int[] b){
@@ -127,8 +124,9 @@ public class MateFaraRedimensionare {
         //int noulDeimpartit = (deimpartit-impartitor)*10 ;
     }
 
-    int index = 1;
+
     public int[] incrementareZero(int [] rezultatIntermediar){
+        int index = 1;
         int [] rezultatIntermediarNou = new int[rezultatIntermediar.length + index] ;
         int k=0;
         for(int s=0; s<=rezultatIntermediar.length-1;s++){
@@ -184,10 +182,11 @@ public class MateFaraRedimensionare {
     }
 
     public void afisare(int [] vectorRezultat){
+        System.out.print("[");
         for (int i = 0; i < vectorRezultat.length; i++) {
             System.out.print(vectorRezultat[i] + " " );
         }
-        System.out.println();
+        System.out.println("]");
     }
 
     public int[] redimensionareVector(int [] vectorRezultat){
@@ -204,7 +203,7 @@ public class MateFaraRedimensionare {
 
     public int[] redimensionareMulteSpatiiVector(int[] vectorRezultat){
         int contor =0;
-        for (int i = 0; i<= vectorRezultat.length; i++){
+        for (int i = 0; i< vectorRezultat.length; i++){
             if(vectorRezultat[i] == 0){
                 contor +=1;
             }else{
@@ -212,12 +211,9 @@ public class MateFaraRedimensionare {
             }
         }
         int [] vectorNou = new int [vectorRezultat.length - contor];
-        if(contor !=0){
-            for(int i = 0; i < vectorNou.length; i++){
-                vectorNou[i] = vectorRezultat[i+contor];
-            }
+        for(int i = 0; i < vectorNou.length; i++){
+            vectorNou[i] = vectorRezultat[i+contor];
         }
         return vectorNou;
     }
-    
 }

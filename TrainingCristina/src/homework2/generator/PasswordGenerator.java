@@ -11,6 +11,7 @@ public class PasswordGenerator {
     private String lastName;
     private int age;
 
+
     public PasswordGenerator(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
