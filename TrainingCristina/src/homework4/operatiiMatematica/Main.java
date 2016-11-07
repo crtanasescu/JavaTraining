@@ -25,14 +25,19 @@ public class Main {
 
 ///////////////////////////////////////////////////////////////
 
-        int [] a = {9,9};
-        int [] b = {9};
+        int [] a = {4,3,3,5,6};
+        int [] b = {1,2};
 
         MateFaraRedimensionare mate = new MateFaraRedimensionare();
 //        mate.adunareFaraRedimensionare(a,b);
 //        mate.scadereFaraRedimensionare(a,b);
-        mate.inmultireFaraRedimensionare(a,b);
-        mate.inmultireFaraRedimensionare(a,b);
+  //      mate.inmultireFaraRedimensionare(a,b);
+  //      mate.inmultireFaraRedimensionare(a,b);
+        mate.impartireFaraRedimensionare(a,b);
+        //pentru impartire am incercat : 1476:15; 14768:123; 14768:12; 14:12; 1234:13; 43356:12;
+
+
+
 //        int [] a = {9,9,8,7};
 //        int [] b = {9,9,8,5,6};
 //

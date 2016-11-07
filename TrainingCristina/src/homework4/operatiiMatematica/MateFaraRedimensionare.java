@@ -5,7 +5,6 @@ package homework4.operatiiMatematica;
  */
 public class MateFaraRedimensionare {
 
-
     public MateFaraRedimensionare() { }
 
     public int[] adunareFaraRedimensionare (int [] a, int [] b){
@@ -48,6 +47,7 @@ public class MateFaraRedimensionare {
         int[] vectorRezultat = new int[max.length];
         int j = max.length - 1;
 
+        //parcurgere vector mic --parte comuna
         for(int i = min.length - 1 ; i>=0; i--, j--){
             int raspuns = max[i+dif] - min[i] - neImprumutam;
             if(raspuns >= 0){
@@ -59,10 +59,13 @@ public class MateFaraRedimensionare {
             }
         }
 
+        //parcurgere diferenta vector mare--parte necomuna
         for(int i = dif-1; i>=0; i--){
             vectorRezultat[i] = max[i] - neImprumutam;
             neImprumutam = 0;
         }
+
+        //redimensionare in cazul in care prima cifra a rezultatului este 0
         if (vectorRezultat[0] == 0){
             afisare(redimensionareMulteSpatiiVector(vectorRezultat));
         }else {
@@ -75,6 +78,8 @@ public class MateFaraRedimensionare {
         int max[] = maxim(a,b);
         int min[] = minim(a,b);
         int[] rezultatIntermediar = null;
+
+        //parcurgere vector mic si inmultire pe rand cu toate cifrele vectorului mare--stocheaza raspunsul intr-un rezultatIntermediar
         for (int i = min.length - 1; i >= 0; i--) {
             rezultatIntermediar = new int[max.length +1];
             int lungime = rezultatIntermediar.length - 1;
@@ -89,6 +94,7 @@ public class MateFaraRedimensionare {
                 }
             }
             rezultatIntermediar = redimensionareVector(rezultatIntermediar);
+            //acumulator este cel care prima data scrie rezultatulIntermediar iar in urmatoarele iteratii face adunare la noile rezultate intermediare(cu 0 adaugat)
             if(acumulator == null){
                 acumulator  = new int[a.length + b.length];
                 int lungimeAcumulator = acumulator.length -1;
@@ -107,21 +113,69 @@ public class MateFaraRedimensionare {
         afisare(rezultatIntermediar);
     }
 
-    public void impartireFaraRedimensionare(int[] a, int[] b){
-        int max[] = maxim(a,b);
-        int min[] = minim(a,b);
-        int lungimePentruFormareNumar = min.length;
-        int deimpartit = 0;
-        for(int i=0; i<lungimePentruFormareNumar-1; i++){
-             deimpartit = max[i]*10 + max[i+1];
+    public void impartireFaraRedimensionare(int[] a, int[] b) {
+        int[] max = maxim(a, b);
+        int[] min = minim(a, b);
+
+        //valori initiale
+        int deimpartit = transformareVectorInNumar(max, min.length);
+        int impartitor = transformareVectorInNumar(min, min.length);
+
+        //daca avem un impartitor de doua cifre iar numarul format din primele doua cifre ale deimpartitului este mai mic decat impartitorul trebuie sa formeze numar cu primele
+        //3 cifre ale deimpartitului pentru a-l imparti la impartitor
+        boolean ok = false;
+        if (deimpartit < impartitor) {
+            deimpartit = transformareVectorInNumar(max, min.length + 1);
+            ok = true;
         }
-        int impartitor = 0;
-        for(int j=0; j<lungimePentruFormareNumar-1; j++){
-            impartitor = min[j]*10 + min[j+1];
+        int cat = deimpartit / impartitor;
+        int rest = deimpartit % impartitor;
+        int dupaVirgula = 0;
+        int i = min.length;
+        if (ok == true) {
+            i = min.length + 1;
         }
-        int rest = 0;
-        int cat = (deimpartit / impartitor) - rest;
-        //int noulDeimpartit = (deimpartit-impartitor)*10 ;
+
+        //iterare de la sfarsitul deimpartitului initial format in functie de lungimea impartitorului, pana la sfarsitul deimpartitului
+        for (; i < max.length; i++) {
+            deimpartit = primireNumarPlusOPozitieVectorSiScoatereNumar(rest, max, i);
+            cat = cat * 10 + deimpartit / impartitor;
+            rest = deimpartit % impartitor;
+        }
+
+
+        int variabilaPentruCazInCareDupaVirgulaAvem0 = 1;
+        while (dupaVirgula < 1000 && rest != 0) {
+            if (rest != 0) {
+                deimpartit = coborareZero(rest);
+                dupaVirgula = dupaVirgula * 10 + deimpartit / impartitor;
+                rest = deimpartit % impartitor;
+            }
+            if (dupaVirgula == 0) {
+                variabilaPentruCazInCareDupaVirgulaAvem0 = 0;
+            }
+        }
+        if (variabilaPentruCazInCareDupaVirgulaAvem0 == 0) {
+            System.out.println("Rezultatul impartirii este: " + cat + "," + variabilaPentruCazInCareDupaVirgulaAvem0 + dupaVirgula);
+        } else {
+            System.out.println("Rezultatul impartirii este: " + cat + "," + dupaVirgula);
+        }
+    }
+
+    public int transformareVectorInNumar(int [] a, int pozitie){
+        int  numarRezultat = 0;
+        for( int i = 0; i<pozitie; i++){
+            numarRezultat = numarRezultat * 10 + a[i];
+        }
+        return numarRezultat;
+    }
+
+    public int primireNumarPlusOPozitieVectorSiScoatereNumar(int numar, int[] vector, int pozitie){
+       return numar * 10 + vector[pozitie];
+    }
+
+    public int coborareZero(int numar){
+        return numar * 10;
     }
 
 
