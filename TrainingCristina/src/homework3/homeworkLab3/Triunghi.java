@@ -7,21 +7,38 @@ public class Triunghi extends Forma {
     float inaltime;
     float baza;
 
-    public Triunghi () {}
-    public Triunghi(float inaltime, float baza){
+   // public Triunghi () {}
+    public Triunghi(float inaltime, float baza, String culoare){
+        super(culoare);
         this.inaltime = inaltime;
         this.baza = baza;
     }
 
-    public float getArie(float inaltime, float baza){
+    @Override
+    public float getArie(){
         return baza * inaltime / 2;
     }
 
     @Override
     public String toString() {
         return "Triunghi{" +
-                "culoare=" + culoare +
-                ", arie=" + getArie(inaltime,baza) +
+                super.toString() +
+                ", arie: " + getArie() +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Triunghi)){
+            return false;
+        }
+        Triunghi t =  (Triunghi) o;
+        if(this.baza == t.baza && this.inaltime == t.inaltime && this.culoare.equals(t.culoare)){
+            return true;
+        }
+        return false;
+    }
+
+
+
 }

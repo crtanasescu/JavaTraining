@@ -6,11 +6,11 @@ package homework3.homeworkLab3;
 public class Forma {
     String culoare;
 
-    public int getArie(){
+    public float getArie(){
         return 0;
     }
 
-    public Forma() {}
+   // public Forma() {}
 
     public Forma(String culoare) {
         this.culoare = culoare;
@@ -18,8 +18,6 @@ public class Forma {
 
     @Override
     public String toString() {
-        return "Forma{" +
-                "culoare='" + culoare + '\'' +
-                '}';
+        return "culoare= " + culoare;
     }
 }
