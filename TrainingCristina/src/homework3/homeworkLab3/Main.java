@@ -26,6 +26,11 @@ public class Main {
            System.out.println(vector[i].toString());
        }
 
+        for(int i=0; i< vector.length; i++) {
+
+        }
+
+
 
     }
 }

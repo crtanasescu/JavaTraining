@@ -4,10 +4,18 @@ package homework3.homeworkLab3;
  * Created by KiKI on 06.10.2016.
  */
 public class Triunghi extends Forma {
-    float inaltime;
-    float baza;
+    private float inaltime;
+    private float baza;
 
-   // public Triunghi () {}
+    public float getInaltime() {
+        return inaltime;
+    }
+
+    public float getBaza() {
+        return baza;
+    }
+
+    // public Triunghi () {}
     public Triunghi(float inaltime, float baza, String culoare){
         super(culoare);
         this.inaltime = inaltime;
@@ -39,6 +47,11 @@ public class Triunghi extends Forma {
         return false;
     }
 
+    public String printDimensiuniTriunghi(){
+        return "inaltime: " + inaltime +
+                "baza: "  + baza;
+
+    }
 
 
 }
