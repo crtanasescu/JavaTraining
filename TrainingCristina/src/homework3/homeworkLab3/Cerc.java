@@ -29,7 +29,7 @@ public class Cerc extends Forma {
                 '}';
     }
 
-    public String printDimensiuniCerc(){
-        return "raza: " + raza;
+    public void printDimensiuniCerc(){
+        System.out.println( "raza: " + raza);
     }
 }

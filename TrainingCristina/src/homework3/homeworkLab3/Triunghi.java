@@ -47,9 +47,9 @@ public class Triunghi extends Forma {
         return false;
     }
 
-    public String printDimensiuniTriunghi(){
-        return "inaltime: " + inaltime +
-                "baza: "  + baza;
+    public void printDimensiuniTriunghi(){
+        System.out.println( "inaltime: " + inaltime +
+                " baza: "  + baza );
 
     }
 

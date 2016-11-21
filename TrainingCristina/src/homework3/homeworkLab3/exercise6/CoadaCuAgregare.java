@@ -5,4 +5,13 @@ package homework3.homeworkLab3.exercise6;
  */
 public class CoadaCuAgregare {
     private Array array = null;
+
+
+    public void enqueue(){
+
+
+    }
+    public void dequeue(){
+
+    }
 }

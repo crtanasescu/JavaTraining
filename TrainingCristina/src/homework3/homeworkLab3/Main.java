@@ -22,12 +22,16 @@ public class Main {
         vector[0] = new Triunghi(23,5,"alb");
         vector[1] = new Triunghi(23,50,"negru");
         vector[2] = new Cerc(23,"alb");
+
        for(int i=0; i< vector.length; i++){
            System.out.println(vector[i].toString());
        }
 
         for(int i=0; i< vector.length; i++) {
-
+            if(vector[i] instanceof Triunghi )
+                ((Triunghi)vector[i]).printDimensiuniTriunghi();
+            if(vector[i] instanceof Cerc)
+                ((Cerc)vector[i]).printDimensiuniCerc();
         }
 
 
