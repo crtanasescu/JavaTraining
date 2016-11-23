@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1783f4c5-cefc-4869-b30d-cb4205938223" name="Default" comment="lab 3">
+    <list default="true" id="1783f4c5-cefc-4869-b30d-cb4205938223" name="Default" comment="lab4 rezolvare cu ciprian jsf">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TrainingCristina.iws" />
@@ -127,11 +127,12 @@
       <file leaf-file-name="Queue.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/homeworkLab4/ex2/Queue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+            <state relative-caret-position="336">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#221#227#0" expanded="true" />
+                <element signature="e#403#404#0" expanded="true" />
                 <element signature="e#440#441#0" expanded="true" />
                 <element signature="e#465#466#0" expanded="true" />
                 <element signature="e#506#507#0" expanded="true" />
@@ -999,7 +1000,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479931164590</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lab4 rezolvare cu ciprian jsf">
+      <created>1479931321742</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1479931321742</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1061,7 +1069,8 @@
     <MESSAGE value="aranjare" />
     <MESSAGE value="lab 3" />
     <MESSAGE value="lab4 rezolvare cu Ciprian" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab4 rezolvare cu Ciprian" />
+    <MESSAGE value="lab4 rezolvare cu ciprian jsf" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab4 rezolvare cu ciprian jsf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1556,11 +1565,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/homeworkLab4/ex2/Queue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        <state relative-caret-position="336">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#221#227#0" expanded="true" />
+            <element signature="e#403#404#0" expanded="true" />
             <element signature="e#440#441#0" expanded="true" />
             <element signature="e#465#466#0" expanded="true" />
             <element signature="e#506#507#0" expanded="true" />
