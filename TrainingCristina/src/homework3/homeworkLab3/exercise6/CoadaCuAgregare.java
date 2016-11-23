@@ -5,13 +5,29 @@ package homework3.homeworkLab3.exercise6;
  */
 public class CoadaCuAgregare {
     private Array array = null;
+    private int capacitate;
+    private int indexElement = 0;
 
 
-    public void enqueue(){
-
-
+    public CoadaCuAgregare(int capacitate) {
+        this.array = new Array(capacitate);
+        this.capacitate = capacitate;
     }
-    public void dequeue(){
 
+    public int enqueue(int number){
+        if(!(indexElement < capacitate)){
+            return Array.ERROR;
+        }
+       return  array.set(indexElement++, number);
     }
+
+    public int dequeue(){
+        if(indexElement == 0){
+            return Array.ERROR;
+        }
+        indexElement--;
+        return array.get(0);
+    }
+
+
 }

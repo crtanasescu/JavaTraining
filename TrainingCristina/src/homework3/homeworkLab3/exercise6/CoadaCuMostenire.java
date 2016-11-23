@@ -4,48 +4,43 @@ package homework3.homeworkLab3.exercise6;
  * Created by crtanasescu on 11/18/2016.
  */
 public class CoadaCuMostenire extends Array {
-    private Array[] array;
-    private int size = 0;
-    private int head = 0;
-    private int tail = 0;
+
+    private int capacitate;
+    private int indexCurent = 0;
 
     public CoadaCuMostenire(int capacitate){
-        array = new Array[capacitate];
+        super(capacitate);
+        this.capacitate = capacitate;
     }
-    public void enqueue(Array item){
-        if((size == array.length)){
-            System.out.println("Cannot add. The queue is full");
+
+    public int enqueuee(int item){
+        if(!(indexCurent < capacitate)){
+            return ERROR;
         }
-        array[tail] = item;
-        tail = (tail+1) % array.length;
-        size++;
-
+        return set(indexCurent++,item);
     }
-    public Array dequeue(){
-        if (size == 0) {
-            System.out.println("Cannot remove from empty queue");
+
+    public int dequeuee(){
+        if(indexCurent == 0){
+            return ERROR;
         }
-        Array item = array[head];
-        array[head] = null;
-        head = (head + 1) % array.length;
-        size--;
-        return item;
-
+        indexCurent--;
+        return get(0);
     }
 
-    public Array peek() {
-        if (size == 0) {
-            System.out.println("Cannot peek into empty queue");
+    public int peek(){
+        if(indexCurent == 0){
+            return ERROR;
         }
-        return array[size - 1];
+        return get(0);
     }
 
-    public boolean isEmpty() {
-        return size == 0;
+    public boolean isEmpty(){
+        return indexCurent == 0;
     }
 
-    public int size() {
-        return size;
+    public int size(){
+        return indexCurent;
     }
 
 }

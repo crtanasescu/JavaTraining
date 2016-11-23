@@ -90,10 +90,6 @@ public class Array {
             System.out.println("Error retrieving value");
 
 
-
-        ///////////////eu
-        CoadaCuMostenire coadaCuMostenire = new CoadaCuMostenire(5);
-        coadaCuMostenire.enqueue(35);
     }
 
 }
