@@ -10,10 +10,10 @@ public class Task2 implements Task {
 
     public Task2() {
         Random random = new Random();
-        numarGenerat = random.nextInt();
+        this.numarGenerat = random.nextInt();
     }
 
     public void execute() {
-        System.out.println(numarGenerat);
+        System.out.println("Numarul generat random este: " + numarGenerat);
     }
 }

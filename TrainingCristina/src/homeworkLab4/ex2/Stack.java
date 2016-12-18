@@ -2,27 +2,36 @@ package homeworkLab4.ex2;
 
 import homeworkLab4.ex1.Task;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ciprian on 11/23/2016.
  */
 public class Stack implements Container {
+    ArrayList<Task> listOfTasks = new ArrayList<Task>();
+
     public Task pop() {
-        return null;
+        if(listOfTasks.isEmpty()){
+            return null;
+        }
+        return listOfTasks.remove(listOfTasks.size() - 1);
     }
 
     public void push(Task task) {
-
+        listOfTasks.add(task);
     }
 
     public int size() {
-        return 0;
+        return listOfTasks.size();
     }
 
     public boolean isEmpty() {
-        return false;
+        return listOfTasks.isEmpty();
     }
 
     public void transferFrom(Container container) {
-
+        while(!container.isEmpty()){
+            this.push(container.pop());
+        }
     }
 }
