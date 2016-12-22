@@ -18,8 +18,6 @@ public class PrintTaskRunner extends AbstractTaskRunner{
     @Override
     protected void actiuneDupaExecutie(Task task) {
         Date date = new Date();
-        Calendar calendar = GregorianCalendar.getInstance();
-        calendar.setTime(date);
-        System.out.println("Task-ul s-a executat la ora: " + calendar.get(Calendar.HOUR_OF_DAY) );
+        System.out.println("Task-ul s-a executat la ora: " + date );
     }
 }

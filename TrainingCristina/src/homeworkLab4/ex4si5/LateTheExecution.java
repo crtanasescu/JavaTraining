@@ -17,7 +17,6 @@ public class LateTheExecution extends PrintTaskRunner{
 
     @Override
     protected void actiuneDupaExecutie(Task task){
-        super.actiuneDupaExecutie(task);
         try {
             Thread.sleep(intarziere); // miliseconds
         } catch (InterruptedException e) {

@@ -10,5 +10,5 @@ public interface IFactory {
      * @param strategy The required Strategy.
      * @return a Container which respects the strategy given as a parameter.
      */
-    Container createContainer(Strategy strategy);
+     Container createContainer(Strategy strategy);
 }
