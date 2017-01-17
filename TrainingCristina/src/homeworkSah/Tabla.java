@@ -64,14 +64,14 @@ public class Tabla {
     }
 
     public void mutaPeTabla(LocatiePeTabla locatieActuala , LocatiePeTabla locatieViitoare){
-        tabla[locatieViitoare.x][locatieViitoare.y] =  tabla[locatieActuala.x][locatieActuala.y];
-        System.out.print("Mutat pe tabla la pozitia: " + locatieViitoare.x + "," + locatieViitoare.y + "  ||||  " );
+        tabla[locatieViitoare.getX()][locatieViitoare.getY()] =  tabla[locatieActuala.getX()][locatieActuala.getY()];
+        System.out.print("Mutat pe tabla la pozitia: " + locatieViitoare.getX() + "," + locatieViitoare.getY() + "  ||||  " );
 
-        tabla[locatieActuala.x][locatieActuala.y] = null;
+        tabla[locatieActuala.getX()][locatieActuala.getY()] = null;
     }
 
     public boolean locLiber(LocatiePeTabla locDeVerificat){
-        return tabla[locDeVerificat.x][locDeVerificat.y] == null;
+        return tabla[locDeVerificat.getX()][locDeVerificat.getY()] == null;
     }
 
   public void afisareTabla() {
@@ -90,12 +90,6 @@ public class Tabla {
      }
      System.out.println();
      System.out.println();
-
  }
-
- public Piesa[][] getTabla(){
-     return tabla;
- }
-
 
 }

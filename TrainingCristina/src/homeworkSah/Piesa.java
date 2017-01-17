@@ -11,12 +11,12 @@ public abstract class Piesa {
     }
 
     public abstract boolean valid(LocatiePeTabla locatiePeTabla, Tabla tabla);
-    public abstract void muta(LocatiePeTabla locatiePeTabla);
+    public abstract void muta(LocatiePeTabla locatiePeTabla, Tabla tabla);
 
     @Override
     public String toString() {
         return "Piesa{" +
-                "locatiePeTabla=" + locatiePeTabla.x + ", " + locatiePeTabla.y +
+                "locatiePeTabla=" + locatiePeTabla.getX() + ", " + locatiePeTabla.getY() +
                 '}';
     }
 }

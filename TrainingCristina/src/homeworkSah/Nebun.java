@@ -1,6 +1,7 @@
 package homeworkSah;
 
 import homework4.operatiiMatematica.Mate;
+import javafx.scene.control.Tab;
 
 /**
  * Created by crtanasescu on 1/8/2017.
@@ -20,132 +21,113 @@ public class Nebun extends Piesa {
 
         //locul este ocupat
         if(!tabla.locLiber(locatieNoua)) {
-            if (locatieNoua.x == this.locatiePeTabla.x && locatieNoua.y == this.locatiePeTabla.y) {
-                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.x + "," + this.locatiePeTabla.y);
+            if (locatieNoua.getX() == this.locatiePeTabla.getX() && locatieNoua.getY() == this.locatiePeTabla.getY()) {
+                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.getX() + "," + this.locatiePeTabla.getY());
                 return false;
             }
-            System.out.println("Locul (" + locatieNoua.x + "," + locatieNoua.y + ") este ocupat");
+            System.out.println("Locul (" + locatieNoua.getX() + "," + locatieNoua.getY() + ") este ocupat");
             return false;
         }
 
         //mutarea este valida
-        int diferentaX = Math.abs(locatieNoua.x - this.locatiePeTabla.x);
-        int diferentaY = Math.abs(locatieNoua.y - this.locatiePeTabla.y);
-        if((diferentaX == diferentaY) && (traiectorieLiberaNebun(locatiePeTabla, locatieNoua, tabla) == true)){
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
-        }
+        int diferentaX = Math.abs(locatieNoua.getX() - this.locatiePeTabla.getX());
+        int diferentaY = Math.abs(locatieNoua.getY() - this.locatiePeTabla.getY());
+        if(diferentaX == diferentaY) {
+            if (traiectorieLiberaNebun(locatiePeTabla, locatieNoua, tabla)) {
+                return true;
+            } else {
+                System.out.println("Traiectoria pentru nebun este ocupata");
+            }
+        }else {
 
-        //mutarea nu este valida
-        System.out.println("Mutare imposibila pentru Nebun! Nebunul se poate misca doar pe diagonala.");
-        return false;
+            //mutarea nu este valida
+            System.out.println("Mutare imposibila pentru Nebun! Nebunul se poate misca doar pe diagonala.");
+            return false;
+        }
+        return  false;
     }
 
     //muta() schimba locatia actuala a piesei cu noua locatie valida
-    public void muta(LocatiePeTabla locatieNoua) {
-        this.locatiePeTabla.x = locatieNoua.x;
-        this.locatiePeTabla.y = locatieNoua.y;
-        System.out.println("Nebunului i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.x + "," + locatiePeTabla.y );
+    public void muta(LocatiePeTabla locatieNoua, Tabla tabla) {
+        if(valid(locatieNoua, tabla)) {
+            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
+            this.locatiePeTabla.setX(locatieNoua.getX());
+            this.locatiePeTabla.setY(locatieNoua.getY());
+            System.out.println("Nebunului i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.getX() + "," + locatiePeTabla.getY());
+        }
     }
+
+    public boolean traiectorieLiberaNebun(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua, Tabla tabla){
+        DirectieNebun rezultat = directie(locatieActuala,locatieNoua);
+        boolean traiectorieLibera = true;
+        switch (rezultat){
+            case INAINTE_SI_STANGA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() - 1,  j = locatieActuala.getY() - 1   ; i > locatieNoua.getX() && j > locatieNoua.getY(); i--, j-- ) {
+                        if (tabla.tabla[i][j] != null) {
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            case INAINTE_SI_DREAPTA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() - 1 , j = locatieActuala.getY() + 1  ; i > locatieNoua.getX() && j < locatieNoua.getY(); i-- , j++) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+               return traiectorieLibera;
+
+            case INAPOI_SI_STANGA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() + 1, j = locatieActuala.getY() - 1; i< locatieNoua.getX() &&  j > locatieNoua.getY(); i++, j-- ) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            case INAPOI_SI_DREAPTA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() + 1, j = locatieActuala.getY() + 1; i< locatieNoua.getX() && j < locatieNoua.getY(); i++, j++) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+               return traiectorieLibera;
+            
+            default:
+                return false;
+        }
+    }
+
+    public DirectieNebun directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if(locatieActuala.getX() - locatieNoua.getX() > 0) {
+            return mutareFata(locatieActuala, locatieNoua);
+        }else{
+            return mutareSpate(locatieActuala, locatieNoua);
+        }
+    }
+
+    public DirectieNebun mutareFata(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua) {
+        if (locatieActuala.getY() - locatieNoua.getY() > 0) {
+            return DirectieNebun.INAINTE_SI_STANGA_PE_DIAGONALA;
+        } else {
+            return DirectieNebun.INAINTE_SI_DREAPTA_PE_DIAGONALA;
+        }
+    }
+
+    public DirectieNebun mutareSpate(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if(locatieActuala.getY() - locatieNoua.getY() >= 0) {
+            return DirectieNebun.INAPOI_SI_STANGA_PE_DIAGONALA;
+        }else{
+            return DirectieNebun.INAPOI_SI_DREAPTA_PE_DIAGONALA;
+        }
+    }
+
 
     @Override
     public String toString() {
         return "N{" +
-                "(" + locatiePeTabla.x + "," + locatiePeTabla.y + ")" +
+                "(" + locatiePeTabla.getX() + "," + locatiePeTabla.getY() + ")" +
                 '}';
-    }
-
-    public boolean traiectorieLiberaNebun(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua, Tabla tabla){
-        int diferentaX = Math.abs(locatieNoua.x - locatieActuala.x);
-        int diferentaY = Math.abs(locatieNoua.y - locatieActuala.y);
-//        if(directie(locatieActuala,locatieNoua) == "inainte si stanga") {
-//            for (int i = locatieActuala.x ; i <= locatieNoua.x ; i--){
-//                for(int j = locatieActuala)
-//            }
-//
-//        }
-
-        Piesa[][] tablaCurenta = tabla.getTabla();
-        int rezultat = directie(locatieActuala,locatieNoua);
-        boolean ok = true;
-        switch (rezultat){
-            case 1: //"inainte si stanga";
-
-                for(int i = locatieActuala.x - 1   ; i<= locatieNoua.x + 1; i-- ) {
-                    for (int j = locatieActuala.y - 1; j <= locatieNoua.y + 1; j--) {
-                       Piesa deTestat = tablaCurenta[i][j];
-                        if(deTestat != null){
-                            ok = false;
-                        }
-
-//                        if (tabla.tabla[i][j] != null) {
-//                            ok = false;
-//                        }
-                    }
-                }
-
-                    if (ok == true) {
-                        return true;
-                    }
-
-            case 2: //"inainte si dreapta";
-                for(int i = locatieActuala.x - 1; i<= locatieNoua.x + 1; i-- ) {
-                    for (int j = locatieActuala.y + 1; j <= locatieNoua.y - 1; j++) {
-                        if(tabla.tabla[i][j] != null){
-                            ok = false;
-                        }
-                    }
-                }
-                if(ok == true){
-                    return true;
-                }
-
-            case 3: //"inapoi si stanga";
-
-                for(int i = locatieActuala.x + 1; i<= locatieNoua.x - 1; i++ ) {
-                    for (int j = locatieActuala.y - 1; j <= locatieNoua.y + 1; j--) {
-                        if(tabla.tabla[i][j] != null){
-                            ok = false;
-                        }
-                    }
-                }
-                if(ok == true){
-                    return true;
-                }
-            case 4: //"inapoi si dreapta";
-
-                for(int i = locatieActuala.x + 1; i<= locatieNoua.x - 1; i++) {
-                    for (int j = locatieActuala.y + 1; j <= locatieNoua.y - 1; j++) {
-                        if(tabla.tabla[i][j] != null){
-                            ok = false;
-                        }
-                    }
-                }
-                if(ok == true){
-                    return true;
-                }
-
-        }
-
-        return false;
-    }
-
-    public int directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
-        if(locatieActuala.x - locatieNoua.x >= 0) {
-            if(locatieActuala.y - locatieNoua.y >=0) {
-                return 1;//"inainte si stanga";
-            }else{
-                return 2;//"inainte si dreapta";
-            }
-        }else{
-            if(locatieActuala.y - locatieNoua.y >= 0) {
-                return 3;//"inapoi si stanga";
-            }else{
-                return 4;//"inapoi si dreapta";
-            }
-        }
-
     }
 
 }

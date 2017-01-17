@@ -17,20 +17,18 @@ public class Cal extends  Piesa {
 
         //locul este ocupat
         if(!tabla.locLiber(locatieNoua)) {
-            if (locatieNoua.x == this.locatiePeTabla.x && locatieNoua.y == this.locatiePeTabla.y) {
-                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.x + "," + this.locatiePeTabla.y);
+            if (locatieNoua.getX() == this.locatiePeTabla.getX() && locatieNoua.getY() == this.locatiePeTabla.getY()) {
+                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.getX() + "," + this.locatiePeTabla.getY());
                 return false;
             }
-            System.out.println("Locul (" + locatieNoua.x + "," + locatieNoua.y + ") este ocupat");
+            System.out.println("Locul (" + locatieNoua.getX() + "," + locatieNoua.getY() + ") este ocupat");
             return false;
         }
 
         //mutarea este valida
-        int dif1 = Math.abs(locatieNoua.x - this.locatiePeTabla.x);
-        int dif2 = Math.abs(locatieNoua.y - this.locatiePeTabla.y);
+        int dif1 = Math.abs(locatieNoua.getX() - this.locatiePeTabla.getX());
+        int dif2 = Math.abs(locatieNoua.getY() - this.locatiePeTabla.getY());
         if ((dif1 == 2 && dif2 == 1) || (dif1 == 1 && dif2 == 2)){
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
             return true;
         }
 
@@ -40,16 +38,19 @@ public class Cal extends  Piesa {
     }
 
     //muta() schimba locatia actuala a piesei cu noua locatie valida
-    public void muta(LocatiePeTabla locatieNoua) {
-        this.locatiePeTabla.x = locatieNoua.x;
-        this.locatiePeTabla.y = locatieNoua.y;
-        System.out.println("Calului i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.x + "," + locatiePeTabla.y );
+    public void muta(LocatiePeTabla locatieNoua, Tabla tabla) {
+        if (valid(locatieNoua, tabla)) {
+            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
+            this.locatiePeTabla.setX(locatieNoua.getX());
+            this.locatiePeTabla.setY(locatieNoua.getY());
+            System.out.println("Calului i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.getX() + "," + locatiePeTabla.getY());
+        }
     }
 
     @Override
     public String toString() {
         return "C{" +
-                "(" + locatiePeTabla.x + "," + locatiePeTabla.y + ")" +
+                "(" + locatiePeTabla.getX() + "," + locatiePeTabla.getY() + ")" +
                 '}';
     }
 }

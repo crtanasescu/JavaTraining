@@ -17,26 +17,32 @@ public class Tura extends Piesa {
 
         //locul este ocupat
         if(!tabla.locLiber(locatieNoua)) {
-            if (locatieNoua.x == this.locatiePeTabla.x && locatieNoua.y == this.locatiePeTabla.y) {
-                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.x + "," + this.locatiePeTabla.y);
+            if (locatieNoua.getX() == this.locatiePeTabla.getX() && locatieNoua.getY() == this.locatiePeTabla.getY()) {
+                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.getX() + "," + this.locatiePeTabla.getY());
                 return false;
             }
-            System.out.println("Locul (" + locatieNoua.x + "," + locatieNoua.y + ") este ocupat");
+            System.out.println("Locul (" + locatieNoua.getX() + "," + locatieNoua.getY() + ") este ocupat");
             return false;
         }
 
         //mutare pe orizontala
-        if(locatieNoua.x == this.locatiePeTabla.x && traiectorieLiberaTura(this.locatiePeTabla,locatieNoua,tabla)) {
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
+        if(locatieNoua.getX() == this.locatiePeTabla.getX()) {
+            if(traiectorieLiberaTura(this.locatiePeTabla, locatieNoua, tabla)) {
+                return true;
+            }else{
+                System.out.println("Traiectoria pentru tura este ocupata.");
+                return false;
+            }
         }
 
         //mutare pe verticala
-        if(locatieNoua.y == this.locatiePeTabla.y&& traiectorieLiberaTura(this.locatiePeTabla,locatieNoua,tabla)) {
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
+        if(locatieNoua.getY() == this.locatiePeTabla.getY()) {
+            if(traiectorieLiberaTura(this.locatiePeTabla, locatieNoua, tabla)) {
+                return true;
+            }else{
+                System.out.println("Traiectoria pentru tura este ocupata.");
+                return false;
+            }
         }
 
         //mutarea nu este valida
@@ -45,59 +51,88 @@ public class Tura extends Piesa {
     }
 
     //muta() schimba locatia actuala a piesei cu noua locatie valida
-    public void muta(LocatiePeTabla locatieNoua) {
-        this.locatiePeTabla.x = locatieNoua.x;
-        this.locatiePeTabla.y = locatieNoua.y;
-        System.out.println("Turei i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.x + "," + locatiePeTabla.y );
+    public void muta(LocatiePeTabla locatieNoua, Tabla tabla) {
+        if(valid(locatieNoua, tabla)){
+            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
+            this.locatiePeTabla.setX(locatieNoua.getX());
+            this.locatiePeTabla.setY(locatieNoua.getY());
+            System.out.println("Turei i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.getX() + "," + locatiePeTabla.getY() );
+        }
     }
 
 
     public boolean traiectorieLiberaTura(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua, Tabla tabla){
-        Piesa[][] tablaCurenta = tabla.getTabla();
-        int rezultat = directie(locatieActuala,locatieNoua);
-        boolean ok = true;
+        DirectieTura  rezultat = directie(locatieActuala,locatieNoua);
+        boolean traiectorieLibera = true;
         switch (rezultat){
-            case 1: //"inainte";
-                    for(int i = locatieActuala.x; i < locatieNoua.x; i-- ){
-                        Piesa deTestat = tablaCurenta[i][locatieNoua.y];
-                        tabla.locLiber(deTestat.locatiePeTabla);
-                        if(deTestat != null){
-                            ok = false;
-                        }
+            case INAINTE:
+                for(int i = locatieActuala.getX()-1; i > locatieNoua.getX(); i-- ) {
+                    if (tabla.tabla[i][locatieNoua.getY()] != null) {
+                        traiectorieLibera = false;
                     }
-                   return ok;
+                }
+                return traiectorieLibera;
 
-            case 2: //"inapoi";
+            case INAPOI:
+                for(int i = locatieActuala.getX()+1; i < locatieNoua.getX(); i++ ) {
+                    if (tabla.tabla[i][locatieNoua.getY()] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
 
+            case STANGA:
+                for(int j = locatieActuala.getY()-1; j > locatieNoua.getY(); j-- ) {
+                    if (tabla.tabla[locatieNoua.getX()][j] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
 
-            case 3: //"stanga";
-
-
-            case 4: //" dreapta";
-
-
+            case DREAPTA:
+                for(int j = locatieActuala.getY() + 1; j < locatieNoua.getY(); j++ ) {
+                    if (tabla.tabla[locatieNoua.getX()][j] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
+            default:
+                return false;
         }
-
-        return false;
     }
 
 
-    public int directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua) {
-        if (locatieActuala.x - locatieNoua.x >= 0) {
-            return 1;//"inainte";
-        } else if (locatieActuala.x - locatieNoua.x < 0) {
-            return 2; //"inapoi
-        } else if (locatieActuala.y - locatieNoua.y >= 0) {
-            return 3; //stanga
+    public DirectieTura directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua) {
+        if (locatieActuala.getX() == locatieNoua.getX()) {
+            return mutareStangaSauDreapta(locatieActuala, locatieNoua);
+        }else if (locatieActuala.getY() == locatieNoua.getY()) {
+            return mutareInainteSauInapoi(locatieActuala, locatieNoua);
         }else{
-            return 4;//"dreapta";
+            return null;
         }
     }
+
+    public DirectieTura mutareStangaSauDreapta(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if (locatieActuala.getY() - locatieNoua.getY() > 0) {
+            return DirectieTura.STANGA;
+        }else{
+            return DirectieTura.DREAPTA;
+        }
+    }
+
+    public DirectieTura  mutareInainteSauInapoi(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if(locatieActuala.getX() - locatieNoua.getX() > 0){
+            return DirectieTura.INAINTE;
+        }else{
+            return DirectieTura.INAPOI;
+        }
+    }
+
 
     @Override
     public String toString() {
         return "T{" +
-                "(" + locatiePeTabla.x + "," + locatiePeTabla.y + ")" +
+                "(" + locatiePeTabla.getX() + "," + locatiePeTabla.getY() + ")" +
                 '}';
     }
 

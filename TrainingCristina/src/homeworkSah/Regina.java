@@ -17,37 +17,46 @@ public class Regina extends Piesa {
     */
     public boolean valid(LocatiePeTabla locatieNoua, Tabla tabla) {
 
-        Piesa[][] tablaCurenta = tabla.getTabla();
-
         //locul este ocupat
         if(!tabla.locLiber(locatieNoua)) {
-            if (locatieNoua.x == this.locatiePeTabla.x && locatieNoua.y == this.locatiePeTabla.y) {
-                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.x + "," + this.locatiePeTabla.y);
+            if (locatieNoua.getX() == this.locatiePeTabla.getX() && locatieNoua.getY() == this.locatiePeTabla.getY()) {
+                System.out.println("Te aflii deja pe locul : " + this.locatiePeTabla.getX() + "," + this.locatiePeTabla.getY());
                 return false;
             }
-            System.out.println("Locul (" + locatieNoua.x + "," + locatieNoua.y + ") este ocupat");
+            System.out.println("Locul (" + locatieNoua.getX() + "," + locatieNoua.getY() + ") este ocupat");
             return false;
         }
 
         //mutare pe diagonala
-        int diferentaX = Math.abs(locatieNoua.x - this.locatiePeTabla.x);
-        int diferentaY = Math.abs(locatieNoua.y - this.locatiePeTabla.y);
+        int diferentaX = Math.abs(locatieNoua.getX() - this.locatiePeTabla.getX());
+        int diferentaY = Math.abs(locatieNoua.getY() - this.locatiePeTabla.getY());
         if(diferentaX == diferentaY) {
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
+            if(traiectorieLiberaTura(this.locatiePeTabla, locatieNoua, tabla)) {
+                return true;
+            }else{
+                System.out.println("Traiectoria pentru regina este ocupata");
+                return false;
+            }
         }
+
         //mutare pe orizontala
-        if(locatieNoua.x == this.locatiePeTabla.x) {
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
+        if(locatieNoua.getX() == this.locatiePeTabla.getX()) {
+            if(traiectorieLiberaTura(this.locatiePeTabla, locatieNoua, tabla)) {
+              return true;
+            }else{
+               System.out.println("Traiectoria pentru regina este ocupata");
+               return false;
+            }
         }
+
         //mutare pe verticala
-        if(locatieNoua.y == this.locatiePeTabla.y) {
-            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
-            muta(locatieNoua);
-            return true;
+        if(locatieNoua.getY() == this.locatiePeTabla.getY()) {
+            if(traiectorieLiberaTura(this.locatiePeTabla, locatieNoua, tabla)) {
+                return true;
+            }else{
+                System.out.println("Traiectoria pentru regina este ocupata");
+                return false;
+            }
         }
 
         //mutarea nu este valida
@@ -57,43 +66,137 @@ public class Regina extends Piesa {
     }
 
     //muta() schimba locatia actuala a piesei cu noua locatie valida
-    public void muta(LocatiePeTabla locatieNoua) {
-        this.locatiePeTabla.x = locatieNoua.x;
-        this.locatiePeTabla.y = locatieNoua.y;
-        System.out.println("Reginei i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.x + "," + locatiePeTabla.y );
-    }
-
-
-    public int directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
-        if(locatieActuala.x - locatieNoua.x >= 0) {
-            if(locatieActuala.y - locatieNoua.y >=0) {
-                return 1;//"inainte si stanga";
-            }else{
-                return 2;//"inainte si dreapta";
-            }
-        }else if(locatieActuala.x - locatieNoua.x < 0){
-            if(locatieActuala.y - locatieNoua.y >= 0) {
-                return 3;//"inapoi si stanga";
-            }else{
-                return 4;//"inapoi si dreapta";
-            }
-        }else if (locatieActuala.x - locatieNoua.x >= 0) {
-            return 5;//"inainte";
-        } else if (locatieActuala.x - locatieNoua.x < 0) {
-            return 6; //"inapoi
-        } else if (locatieActuala.y - locatieNoua.y >= 0) {
-            return 7; //stanga
-        }else{
-            return 8;//"dreapta";
+    public void muta(LocatiePeTabla locatieNoua, Tabla tabla) {
+        if(valid(locatieNoua,tabla)) {
+            tabla.mutaPeTabla(this.locatiePeTabla, locatieNoua);
+            this.locatiePeTabla.setX(locatieNoua.getX());
+            this.locatiePeTabla.setY(locatieNoua.getY());
+            System.out.println("Reginei i-a fost schimbata pozitia interna. Noua pozitie: " + locatiePeTabla.getX() + "," + locatiePeTabla.getY());
         }
-
-
     }
+
+    public boolean traiectorieLiberaTura(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua, Tabla tabla){
+        DirectieRegina  rezultat = directie(locatieActuala,locatieNoua);
+        boolean traiectorieLibera = true;
+        switch (rezultat){
+            case INAINTE:
+                for(int i = locatieActuala.getX()-1; i > locatieNoua.getX(); i-- ) {
+                    if (tabla.tabla[i][locatieNoua.getY()] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
+
+            case INAPOI:
+                for(int i = locatieActuala.getX()+1; i < locatieNoua.getX(); i++ ) {
+                    if (tabla.tabla[i][locatieNoua.getY()] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
+
+            case STANGA:
+                for(int j = locatieActuala.getY()-1; j > locatieNoua.getY(); j-- ) {
+                    if (tabla.tabla[locatieNoua.getX()][j] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
+
+            case DREAPTA:
+                for(int j = locatieActuala.getY() + 1; j < locatieNoua.getY(); j++ ) {
+                    if (tabla.tabla[locatieNoua.getX()][j] != null) {
+                        traiectorieLibera = false;
+                    }
+                }
+                return traiectorieLibera;
+
+            case INAINTE_SI_STANGA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX()-1, j = locatieActuala.getY() - 1  ; i > locatieNoua.getX() &&  j > locatieNoua.getY(); i-- , j--) {
+                        if (tabla.tabla[i][j] != null) {
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            case INAINTE_SI_DREAPTA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() - 1,  j = locatieActuala.getY() + 1   ; i > locatieNoua.getX() && j < locatieNoua.getY() ; i-- , j++) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            case INAPOI_SI_STANGA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() + 1, j = locatieActuala.getY() - 1; i< locatieNoua.getX() && j > locatieNoua.getY(); i++, j-- ) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            case INAPOI_SI_DREAPTA_PE_DIAGONALA:
+                for(int i = locatieActuala.getX() + 1, j = locatieActuala.getY() + 1; i< locatieNoua.getX() && j < locatieNoua.getY(); i++, j++) {
+                        if(tabla.tabla[i][j] != null){
+                            traiectorieLibera = false;
+                        }
+                }
+                return traiectorieLibera;
+
+            default:
+                return false;
+        }
+    }
+
+    public DirectieRegina directie(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua) {
+        if (locatieActuala.getX() == locatieNoua.getX()) {
+            return  mutareStangaSauDreapta(locatieActuala, locatieNoua);
+        }else if(locatieActuala.getY() == locatieNoua.getY()){
+            return  mutareInainteSauInapoi(locatieActuala, locatieNoua);
+        }else if(locatieActuala.getX() - locatieNoua.getX() > 0) {
+            return mutareFataStangaSauDreapta(locatieActuala, locatieNoua);
+        }else{
+            return mutareSpateStangaSauDreapta(locatieActuala, locatieNoua);
+        }
+    }
+
+    public DirectieRegina mutareStangaSauDreapta(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if (locatieActuala.getY() - locatieNoua.getY() > 0) {
+            return DirectieRegina.STANGA;
+        }else{
+            return DirectieRegina.DREAPTA;
+        }
+    }
+
+    public DirectieRegina  mutareInainteSauInapoi(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if(locatieActuala.getX() - locatieNoua.getX() > 0){
+            return DirectieRegina.INAINTE;
+        }else{
+            return DirectieRegina.INAPOI;
+        }
+    }
+
+    public DirectieRegina mutareFataStangaSauDreapta(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua) {
+        if (locatieActuala.getY() - locatieNoua.getY() >= 0) {
+            return DirectieRegina.INAINTE_SI_STANGA_PE_DIAGONALA;
+        } else {
+            return DirectieRegina.INAINTE_SI_DREAPTA_PE_DIAGONALA;
+        }
+    }
+
+    public DirectieRegina mutareSpateStangaSauDreapta(LocatiePeTabla locatieActuala, LocatiePeTabla locatieNoua){
+        if(locatieActuala.getY() - locatieNoua.getY() >= 0) {
+            return DirectieRegina.INAPOI_SI_STANGA_PE_DIAGONALA;
+        }else{
+            return DirectieRegina.INAPOI_SI_DREAPTA_PE_DIAGONALA;
+        }
+    }
+
 
     @Override
     public String toString() {
         return "Q{" +
-                "(" + locatiePeTabla.x + "," + locatiePeTabla.y + ")" +
+                "(" + locatiePeTabla.getX() + "," + locatiePeTabla.getY() + ")" +
                 '}';
     }
 
