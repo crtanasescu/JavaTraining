@@ -1,9 +1,6 @@
 package homeworkTLab7Colectii;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by crtanasescu on 2/21/2017.
@@ -19,20 +16,21 @@ public class Main {
         System.out.println(colectieNume);
 
 
+        TreeSet<Student> t =new TreeSet();
+        t.add(new Student("Marius", 9));
 
-
-        Set<Student> colectieStudenti = new HashSet<Student>();
-        colectieStudenti.add(new Student("Marius", 9));
-        colectieStudenti.add(new Student("Catalina", 10));
-        System.out.println(colectieStudenti);
-        colectieStudenti.add(new Student("Marius", 9));
-        System.out.println(colectieStudenti);
-
-
-        for(Student s : colectieStudenti){
-            System.out.println(s.equals(s));
-         //   System.out.println(((Object)s).equals(s));
-        }
+//        Set<Student> colectieStudenti = new HashSet<Student>();
+//        colectieStudenti.add(new Student("Marius", 9));
+//        colectieStudenti.add(new Student("Catalina", 10));
+//        System.out.println(colectieStudenti);
+//        colectieStudenti.add(new Student("Marius", 9));
+//        System.out.println(colectieStudenti);
+//
+//
+//        for(Student s : colectieStudenti){
+//            System.out.println(s.equals(s));
+//         //   System.out.println(((Object)s).equals(s));
+//        }
 
 
 
