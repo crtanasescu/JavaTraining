@@ -32,6 +32,11 @@ public class Student {
         }
     }
 
+
+    public boolean equals(Student s){
+        return  false;
+    }
+
     @Override
     public int hashCode() {
         int calculHasCode = this.nume.hashCode() + (int)medie ;
