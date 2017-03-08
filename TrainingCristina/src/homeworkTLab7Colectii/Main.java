@@ -16,18 +16,18 @@ public class Main {
         System.out.println(colectieNume);
 
 
-        TreeSet<Student> t =new TreeSet();
-        t.add(new Student("Marius", 9));
+        TreeSet<StudentMare> t =new TreeSet();
+        t.add(new StudentMare("Marius", 9));
 
-//        Set<Student> colectieStudenti = new HashSet<Student>();
-//        colectieStudenti.add(new Student("Marius", 9));
-//        colectieStudenti.add(new Student("Catalina", 10));
+//        Set<StudentMare> colectieStudenti = new HashSet<StudentMare>();
+//        colectieStudenti.add(new StudentMare("Marius", 9));
+//        colectieStudenti.add(new StudentMare("Catalina", 10));
 //        System.out.println(colectieStudenti);
-//        colectieStudenti.add(new Student("Marius", 9));
+//        colectieStudenti.add(new StudentMare("Marius", 9));
 //        System.out.println(colectieStudenti);
 //
 //
-//        for(Student s : colectieStudenti){
+//        for(StudentMare s : colectieStudenti){
 //            System.out.println(s.equals(s));
 //         //   System.out.println(((Object)s).equals(s));
 //        }

@@ -1,5 +1,7 @@
 package temaLaborator7Colectii;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,11 +57,15 @@ public class Main {
         listaStudentiPentruMapa.add(new Student("Calin Ene", 9.1f));
         listaStudentiPentruMapa.add(new Student("Cristina Marinescu", 9.9f));
 
-        for(Student s : listaStudentiPentruMapa){
-            Float medieRotunjita =  s.getMedie();
-
-        }
+        ComparatorPentruMedii cpm = new ComparatorPentruMedii();
         Gradebook gr = new Gradebook();
+        System.out.println(gr);
+        System.out.println(cpm);
+//        for(Student stud : listaStudentiPentruMapa) {
+//            int medieRotunjita = Math.round( stud.getMedie());
+//            gr.put(medieRotunjita, );
+//        }
+
 
 
 

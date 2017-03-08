@@ -16,7 +16,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentMare{" +
                 "nume='" + nume + '\'' +
                 ", medie=" + medie +
                 '}';

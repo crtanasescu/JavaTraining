@@ -5,11 +5,11 @@ import java.util.*;
 /**
  * Created by crtanasescu on 2/21/2017.
  */
-public class Gradebook extends TreeMap <Float,Student>{
-    Map <Float,LinkedList<Student>> gradebook = new TreeMap(Collections.reverseOrder());
+public class Gradebook extends TreeMap <Float, StudentMare>{
+    Map <Float,LinkedList<StudentMare>> gradebook = new TreeMap(Collections.reverseOrder());
 
     @Override
-    public Student put(Float key, Student value) {
+    public StudentMare put(Float key, StudentMare value) {
         if(key >= 0 && key <= 10) {
             return super.put(key, value);
         }

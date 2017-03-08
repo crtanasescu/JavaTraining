@@ -3,18 +3,18 @@ package homeworkTLab7Colectii;
 /**
  * Created by crtanasescu on 2/21/2017.
  */
-public class Student {
+public class StudentMare {
     String nume;
     float medie;
 
-    public Student(String nume, float medie) {
+    public StudentMare(String nume, float medie) {
         this.nume = nume;
         this.medie = medie;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "StudentMare{" +
                 "nume='" + nume + '\'' +
                 ", medie=" + medie +
                 '}';
@@ -30,7 +30,7 @@ public class Student {
         return this.equals(obj);
     }
 
-    public boolean equals(Student s){
+    public boolean equals(StudentMare s){
         return false;
     }
 
