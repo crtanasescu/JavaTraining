@@ -41,27 +41,35 @@ public class Main {
 
 
 
-        Set<Student> listaStudentiPentruMapa = new MyHashSet<Student>();
-        listaStudentiPentruMapa.add(new Student("Cristi Ionescu", 0.1f));
-        listaStudentiPentruMapa.add(new Student("Dragan Marian", 1.4f));
-        listaStudentiPentruMapa.add(new Student("Ioana Enache", 2.3f));
-        listaStudentiPentruMapa.add(new Student("Cosmin Petrache", 3.0f));
-        listaStudentiPentruMapa.add(new Student("Iulian Istrate", 4.0f));
-        listaStudentiPentruMapa.add(new Student("Calin Ion", 4.4f));
-        listaStudentiPentruMapa.add(new Student("Ioana Iordache", 4.5f));
-        listaStudentiPentruMapa.add(new Student("Ana Popescu", 5.1f));
-        listaStudentiPentruMapa.add(new Student("Alina Tanase", 5.4f));
-        listaStudentiPentruMapa.add(new Student("Ionel Negrea", 6.0f));
-        listaStudentiPentruMapa.add(new Student("Cristina Mircea", 7.3f));
-        listaStudentiPentruMapa.add(new Student("Cristian Iordachescu", 8.4f));
-        listaStudentiPentruMapa.add(new Student("Calin Ene", 9.1f));
-        listaStudentiPentruMapa.add(new Student("Cristina Marinescu", 9.9f));
+      
 
         ComparatorPentruMedii cpm = new ComparatorPentruMedii();
-        Gradebook gr = new Gradebook();
+        Gradebook gr = new Gradebook(cpm);
+        gr.add(new Student("ana", 5.5f));
+        gr.add(new Student("ionel", 5.7f));
+        gr.add(new Student("Cristi Ionescu", 0.1f));
+        gr.add(new Student("Dragan Marian", 1.4f));
+        gr.add(new Student("Ioana Enache", 2.3f));
+        gr.add(new Student("Cosmin Petrache", 3.0f));
+        gr.add(new Student("Iulian Istrate", 4.0f));
+        gr.add(new Student("Calin Ion", 4.4f));
+        gr.add(new Student("Ioana Iordache", 4.5f));
+        gr.add(new Student("Ana Popescu", 5.1f));
+        gr.add(new Student("Alina Tanase", 5.4f));
+        gr.add(new Student("Ionel Negrea", 6.0f));
+        gr.add(new Student("Cristina Mircea", 7.3f));
+        gr.add(new Student("Cristian Iordachescu", 8.4f));
+        gr.add(new Student("Calin Ene", 9.1f));
+        gr.add(new Student("Cristina Marinescu", 9.9f));
+        
+        
+        gr.returnKey();
+        
+        
+        
         System.out.println(gr);
         System.out.println(cpm);
-//        for(Student stud : listaStudentiPentruMapa) {
+//        for(Student stud : gr) {
 //            int medieRotunjita = Math.round( stud.getMedie());
 //            gr.put(medieRotunjita, );
 //        }
