@@ -8,15 +8,17 @@ import java.util.*;
  * Created by crtanasescu on 2/21/2017.
  */
 public class Gradebook extends TreeMap <Integer, ArrayList<Student>>{
-    ComparatorPentruMedii comparator;
 
 
-    public Gradebook(ComparatorPentruMedii comparator) {
-        this.comparator = comparator;
-
-        for(int key = 1; key <= 10; key++) {
+    public Gradebook() {
+        for(int key = 0; key <= 10; key++) {
             this.put(key, null);
         }
+
+        ArrayList<Integer> keys = new ArrayList<Integer>(this.keySet());
+        Collections.sort(keys, new ComparatorPentruMedii());
+        System.out.println(keys);
+
     }
 
     @Override

@@ -1,9 +1,6 @@
 package temaLaborator7Colectii;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Ciprian on 2/22/2017.
@@ -44,7 +41,7 @@ public class Main {
       
 
         ComparatorPentruMedii cpm = new ComparatorPentruMedii();
-        Gradebook gr = new Gradebook(cpm);
+        Gradebook gr = new Gradebook();
         gr.add(new Student("ana", 5.5f));
         gr.add(new Student("ionel", 5.7f));
         gr.add(new Student("Cristi Ionescu", 0.1f));
@@ -61,12 +58,10 @@ public class Main {
         gr.add(new Student("Cristian Iordachescu", 8.4f));
         gr.add(new Student("Calin Ene", 9.1f));
         gr.add(new Student("Cristina Marinescu", 9.9f));
-        
-        
-        gr.returnKey();
-        
-        
-        
+
+        ArrayList<Integer> keys = new ArrayList<Integer>(gr.keySet());
+        Collections.sort(keys, new ComparatorPentruMedii());
+        System.out.println(keys);
         System.out.println(gr);
         System.out.println(cpm);
 //        for(Student stud : gr) {
