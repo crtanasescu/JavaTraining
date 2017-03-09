@@ -34,11 +34,13 @@ public class Main {
         System.out.println(colectiePentruIterare);
         for (Student s : colectiePentruIterare){
             System.out.println(s.equals(s));
-            System.out.println((Object)s.equals(s));
+            System.out.println(s.equals((Object)s));
         }
         System.out.println();
 
-      
+
+
+
 
         ComparatorPentruMedii cpm = new ComparatorPentruMedii();
         Gradebook gr = new Gradebook(cpm);
@@ -63,7 +65,7 @@ public class Main {
 
         ArrayList<Integer> keys = new ArrayList<Integer>(gr.keySet());
         Collections.sort(keys, new ComparatorPentruMedii());
-       // System.out.println(keys);
+        System.out.println(keys);
         System.out.println(gr);
         System.out.println();
 

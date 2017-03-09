@@ -41,6 +41,15 @@ public class Student implements Comparable{
         return calculHasCode;
     }
 
+
+
+    public int compareTo(Object obj)
+    {
+        Student s = (Student) obj;
+        return this.nume.toLowerCase().compareTo(s.getNume().toLowerCase());
+    }
+
+
     public String getNume() {
         return nume;
     }
@@ -55,11 +64,5 @@ public class Student implements Comparable{
 
     public void setMedie(float medie) {
         this.medie = medie;
-    }
-
-    public int compareTo(Object obj)
-    {
-        Student s = (Student) obj;
-        return this.nume.toLowerCase().compareTo(s.getNume().toLowerCase());
     }
 }

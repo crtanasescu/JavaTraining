@@ -17,13 +17,8 @@ public class ClasaCeMostenesteHashSet extends HashSet<Integer> {
 
     @Override
     public boolean addAll(Collection<? extends Integer> collectionOfElements) {
-        nrTotalDeElementeAdaugate = 0;
-        boolean modified = false;
-        for (Integer element : collectionOfElements) {
-            if (add(element)) {
-                modified = true;
-            }
-        }
-        return modified;
+        return super.addAll(collectionOfElements);
     }
+
+
 }

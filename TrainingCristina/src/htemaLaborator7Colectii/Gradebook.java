@@ -9,13 +9,7 @@ public class Gradebook extends TreeMap <Integer, ArrayList<Student>>{
 
 
     public Gradebook(ComparatorPentruMedii comparatorPentruMedii) {
-        for(int key = 0; key <= 10; key++) {
-            this.put(key, null);
-        }
-        ArrayList<Integer> keys = new ArrayList<Integer>(this.keySet());
-        Collections.sort(keys, comparatorPentruMedii);
-        System.out.println(keys);
-
+        super(comparatorPentruMedii);
     }
 
     @Override
@@ -30,7 +24,7 @@ public class Gradebook extends TreeMap <Integer, ArrayList<Student>>{
 
     public void add(Student stud) {
         Integer roundGrade = Math.round(stud.getMedie());
-        if (this.containsKey(roundGrade)) {
+        if (stud.getMedie() >= 0 && stud.getMedie() <= 10) {
             ArrayList<Student> studentsList = this.get(roundGrade);
 
             if (studentsList == null) {

@@ -17,6 +17,7 @@ public class ClasaCeMostenesteLinkedList extends LinkedList<Integer>{
 
     @Override
     public boolean addAll(Collection<? extends Integer> colectie) {
+
         return super.addAll(colectie);
     }
 }
