@@ -1,4 +1,4 @@
-package homeworkTLab7Colectii;
+package htemaLaborator7Colectii;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,10 +17,10 @@ public class ClasaCeMostenesteHashSet extends HashSet<Integer> {
 
     @Override
     public boolean addAll(Collection<? extends Integer> collectionOfElements) {
+        nrTotalDeElementeAdaugate = 0;
         boolean modified = false;
         for (Integer element : collectionOfElements) {
             if (add(element)) {
-                nrTotalDeElementeAdaugate++;
                 modified = true;
             }
         }

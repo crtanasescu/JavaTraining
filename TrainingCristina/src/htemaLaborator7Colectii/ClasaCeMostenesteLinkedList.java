@@ -1,4 +1,4 @@
-package homeworkTLab7Colectii;
+package htemaLaborator7Colectii;
 
 import java.util.Collection;
 import java.util.LinkedList;

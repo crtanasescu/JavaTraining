@@ -1,13 +1,12 @@
-package temaLaborator7Colectii;
+package htemaLaborator7Colectii;
 
 /**
  * Created by Ciprian on 2/22/2017.
  */
-public class Student {
+public class Student implements Comparable{
+
     private String nume;
     private float medie;
-
-
 
     public Student(String nume, float medie) {
         this.nume = nume;
@@ -31,7 +30,6 @@ public class Student {
             return false;
         }
     }
-
 
     public boolean equals(Student s){
         return  false;
@@ -57,5 +55,11 @@ public class Student {
 
     public void setMedie(float medie) {
         this.medie = medie;
+    }
+
+    public int compareTo(Object obj)
+    {
+        Student s = (Student) obj;
+        return this.nume.toLowerCase().compareTo(s.getNume().toLowerCase());
     }
 }
