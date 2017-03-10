@@ -1,8 +1,9 @@
 package penguin;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class Penguin {
+public class Penguin implements Comparable {
 	
 	private String name;
 	private PenguinRace race;
@@ -27,6 +28,15 @@ public class Penguin {
 	}
 
 
+
+
+	public int compareTo(Object o) {
+		Penguin p = (Penguin) o;
+		//if(this.race == p.race)
+		return 0;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -46,6 +56,5 @@ public class Penguin {
 	public void setMatingPartners(List<Penguin> matingPartners) {
 		this.matingPartners = matingPartners;
 	}
-	
 
 }
