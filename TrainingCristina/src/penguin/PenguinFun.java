@@ -2,9 +2,7 @@ package penguin;
 
 import homework3.homeworkLab3.exercise6.Array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class PenguinFun {
 
@@ -26,14 +24,18 @@ public class PenguinFun {
 			pinguiniSmecheri.add(pinguin);
 		}
 		System.out.println(pinguini);
+		System.out.println();
 		System.out.println(pinguiniSmecheri);
+		System.out.println();
 
-		//Order the elements from the ArrayList above. Could you have ordered them inside the HashSet? Order them by race, and then by age.
-		//Print the results. Then, for each penguin, write the code to generate a random number(max 3) of mating partners, and fill the list inside the penguin object.
+		//Order the elements from the ArrayList above. Could you have ordered them inside the HashSet? Order them by race, and then by age. Print the results.
+		// Then, for each penguin, write the code to generate a random number(max 3) of mating partners, and fill the list inside the penguin object.
 		// Order them again, but this time by the number of mating partners, their average age, and then by the name of the initial penguin.
 		// Print the results again, making sure the toString method can show demonstrate the sorting is correct.
 
-
+		Collections.sort(pinguini);
+		System.out.println(pinguini);
+		System.out.println();
 
 
 

@@ -13,6 +13,7 @@ public class PenguinHatchery {
 	private char [] letters; 
 	private List<PenguinRace> penguinRaces = Arrays.asList(PenguinRace.values());
 	private int numberOfRaces = penguinRaces.size();
+	private List<Penguin> matchingPartners;
 
 	public PenguinHatchery() {
 		rand = new Random();
@@ -27,7 +28,7 @@ public class PenguinHatchery {
 	public Penguin hatchPenguin(){
 		return new Penguin("pingu-"+generateString(5), 
 							penguinRaces.get(rand.nextInt(numberOfRaces)),
-							rand.nextDouble()*15);
+							rand.nextDouble()*15, generateListOfMatchingPartners() );
 	}
 	
 	/**
@@ -42,7 +43,13 @@ public class PenguinHatchery {
 		return sb.toString();
 	}
 	
-	
+	private  List<Penguin> generateListOfMatchingPartners (){
+		int numberOfMatchingPartners = rand.nextInt(3);
+		for ( int i = 0; i<= numberOfMatchingPartners; i++){
+			matchingPartners.add(hatchPenguin());
+		}
+		return  matchingPartners;
+	}
 	
 	
 	
