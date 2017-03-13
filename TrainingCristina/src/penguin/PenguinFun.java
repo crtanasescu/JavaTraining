@@ -1,5 +1,6 @@
 package penguin;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import homework3.homeworkLab3.exercise6.Array;
 
 import java.util.*;
@@ -27,6 +28,8 @@ public class PenguinFun {
 		System.out.println();
 		System.out.println(pinguiniSmecheri);
 		System.out.println();
+		System.out.println();
+		System.out.println();
 
 		//Order the elements from the ArrayList above. Could you have ordered them inside the HashSet? Order them by race, and then by age. Print the results.
 		// Then, for each penguin, write the code to generate a random number(max 3) of mating partners, and fill the list inside the penguin object.
@@ -36,14 +39,38 @@ public class PenguinFun {
 		Collections.sort(pinguini);
 		System.out.println(pinguini);
 		System.out.println();
+		System.out.println();
 
-
+		Collections.sort(pinguini, new ComparatorCustom());
+		System.out.println(pinguini);   //nu ne prea putem da seama de sortarea dupa numele pinguinului initial: rar vom avea aceeasi medie de varsta
 
 
 
 		//Insert the generated Penguin objects into a map, and group them by their race.
 		// Use the name of the race as the key and whatever collection you find appropriate  as the value.
 		// Iterate through the Map and print the penguins grouped by their race
+
+//		HashMap<PenguinRace, ArrayList<Penguin>> map = new HashMap<PenguinRace,ArrayList<Penguin>>();
+//
+//		for ( Penguin p : pinguini){
+//			PenguinRace rasa = p.getRace();
+//			ArrayList<Penguin> pinguiniDinAceeasiRasa = map.get(rasa);
+//			if(pinguiniDinAceeasiRasa == null){
+//				pinguiniDinAceeasiRasa = new ArrayList<Penguin>();
+//			}
+//			map.put(p.getRace(), pinguiniDinAceeasiRasa );
+//		}
+//
+//		Iterator entries = map.entrySet().iterator();
+//		while (entries.hasNext()) {
+//			Map.Entry thisEntry = (Map.Entry) entries.next();
+//			Integer key = (Integer)thisEntry.getKey();
+//			ArrayList value =  (ArrayList) thisEntry.getValue();
+//			if(value.size() > 0){
+//				Collections.sort(value);
+//			}
+//		}
+//		System.out.println(map);
 
 
 

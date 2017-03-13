@@ -8,12 +8,14 @@ public class Penguin implements Comparable {
 	private String name;
 	private PenguinRace race;
 	private double age;
+	private int numberOfMatingPartners;
 	private List<Penguin> matingPartners;
 	
-	public Penguin(String name, PenguinRace race, double age, List<Penguin> matingPartners) {
+	public Penguin(String name, PenguinRace race, double age, int numberOfMatingPartners, List<Penguin> matingPartners) {
 		this.name = name;
 		this.race = race;
 		this.age = age;
+		this.numberOfMatingPartners = numberOfMatingPartners;
 		this.matingPartners = matingPartners;
 	}
 
@@ -24,6 +26,7 @@ public class Penguin implements Comparable {
 				"NAME='" + name + '\'' + "," +
 				"   race=" + race + "," +
 				"   age=" + age + "," +
+				"   numberOfMatingPartners=" + numberOfMatingPartners + "," +
 				"   matingPartners=" + matingPartners +
 				'}' ;
 	}
@@ -66,4 +69,11 @@ public class Penguin implements Comparable {
 		this.matingPartners = matingPartners;
 	}
 
+	public int getNumberOfMatingPartners() {
+		return numberOfMatingPartners;
+	}
+
+	public void setNumberOfMatingPartners(int numberOfMatingPartners) {
+		this.numberOfMatingPartners = numberOfMatingPartners;
+	}
 }

@@ -1,5 +1,6 @@
 package penguin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +14,8 @@ public class PenguinHatchery {
 	private char [] letters; 
 	private List<PenguinRace> penguinRaces = Arrays.asList(PenguinRace.values());
 	private int numberOfRaces = penguinRaces.size();
-	private List<Penguin> matchingPartners;
+	private int numberOfMatingPartners;
+
 
 	public PenguinHatchery() {
 		rand = new Random();
@@ -28,7 +30,7 @@ public class PenguinHatchery {
 	public Penguin hatchPenguin(){
 		return new Penguin("pingu-"+generateString(5), 
 							penguinRaces.get(rand.nextInt(numberOfRaces)),
-							rand.nextDouble()*15, generateListOfMatchingPartners() );
+							rand.nextDouble()*15,generateNumberOfMatingPartners(), generateListOfMatchingPartners() );
 	}
 	
 	/**
@@ -42,11 +44,22 @@ public class PenguinHatchery {
 		}
 		return sb.toString();
 	}
-	
+
+	private int generateNumberOfMatingPartners(){
+		 this.numberOfMatingPartners = rand.nextInt(4);
+		 return numberOfMatingPartners;
+	}
+
 	private  List<Penguin> generateListOfMatchingPartners (){
-		int numberOfMatchingPartners = rand.nextInt(3);
-		for ( int i = 0; i<= numberOfMatchingPartners; i++){
-			matchingPartners.add(hatchPenguin());
+		List<Penguin> matchingPartners = new ArrayList<Penguin>();
+		if(numberOfMatingPartners == 0){
+			matchingPartners.add(null);
+		}else{
+			for (int i = 1; i <= numberOfMatingPartners; i++) {
+				matchingPartners.add(new Penguin("pingu-" + generateString(5),
+						penguinRaces.get(rand.nextInt(numberOfRaces)),
+						rand.nextDouble() * 15,0, null));
+			}
 		}
 		return  matchingPartners;
 	}
