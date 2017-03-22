@@ -30,7 +30,7 @@ public class PenguinHatchery {
 	public Penguin hatchPenguin(){
 		return new Penguin("pingu-"+generateString(5), 
 							penguinRaces.get(rand.nextInt(numberOfRaces)),
-							rand.nextDouble()*15,generateNumberOfMatingPartners(), generateListOfMatchingPartners() );
+							rand.nextDouble()*15, generateNumberOfMatingPartners(), generateListOfMatchingPartners() );
 	}
 	
 	/**
@@ -55,10 +55,10 @@ public class PenguinHatchery {
 		if(numberOfMatingPartners == 0){
 			matchingPartners.add(null);
 		}else{
-			for (int i = 1; i <= numberOfMatingPartners; i++) {
+			for (int i = 0; i < numberOfMatingPartners; i++) {
 				matchingPartners.add(new Penguin("pingu-" + generateString(5),
 						penguinRaces.get(rand.nextInt(numberOfRaces)),
-						rand.nextDouble() * 15,0, null));
+						rand.nextDouble() * 15,0,null));
 			}
 		}
 		return  matchingPartners;

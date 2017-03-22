@@ -19,7 +19,7 @@ public class PenguinFun {
 		PenguinHatchery penguinHatchery = new PenguinHatchery();
 		ArrayList<Penguin> pinguini = new ArrayList<Penguin>();
 		HashSet<Penguin> pinguiniSmecheri = new HashSet<Penguin>();
-		for(int i = 0; i < 9; i++){
+		for(int i = 0; i < 10; i++){
 			Penguin pinguin = penguinHatchery.hatchPenguin();
 			pinguini.add(pinguin);
 			pinguiniSmecheri.add(pinguin);
@@ -43,34 +43,36 @@ public class PenguinFun {
 
 		Collections.sort(pinguini, new ComparatorCustom());
 		System.out.println(pinguini);   //nu ne prea putem da seama de sortarea dupa numele pinguinului initial: rar vom avea aceeasi medie de varsta
-
+		System.out.println();
+		System.out.println();
 
 
 		//Insert the generated Penguin objects into a map, and group them by their race.
 		// Use the name of the race as the key and whatever collection you find appropriate  as the value.
 		// Iterate through the Map and print the penguins grouped by their race
 
-//		HashMap<PenguinRace, ArrayList<Penguin>> map = new HashMap<PenguinRace,ArrayList<Penguin>>();
-//
-//		for ( Penguin p : pinguini){
-//			PenguinRace rasa = p.getRace();
-//			ArrayList<Penguin> pinguiniDinAceeasiRasa = map.get(rasa);
-//			if(pinguiniDinAceeasiRasa == null){
-//				pinguiniDinAceeasiRasa = new ArrayList<Penguin>();
-//			}
-//			map.put(p.getRace(), pinguiniDinAceeasiRasa );
-//		}
-//
-//		Iterator entries = map.entrySet().iterator();
-//		while (entries.hasNext()) {
-//			Map.Entry thisEntry = (Map.Entry) entries.next();
-//			Integer key = (Integer)thisEntry.getKey();
-//			ArrayList value =  (ArrayList) thisEntry.getValue();
-//			if(value.size() > 0){
-//				Collections.sort(value);
-//			}
-//		}
-//		System.out.println(map);
+		HashMap<PenguinRace, ArrayList<Penguin>> map = new HashMap<PenguinRace,ArrayList<Penguin>>();
+
+		for ( Penguin p : pinguini){
+			PenguinRace rasa = p.getRace();
+			ArrayList<Penguin> pinguiniDinAceeasiRasa = map.get(rasa);
+			if(pinguiniDinAceeasiRasa == null){
+				pinguiniDinAceeasiRasa = new ArrayList<Penguin>();
+			}
+			pinguiniDinAceeasiRasa.add(p);
+			map.put(rasa,pinguiniDinAceeasiRasa);
+		}
+
+		Iterator entries = map.entrySet().iterator();
+		while (entries.hasNext()) {
+			Map.Entry thisEntry = (Map.Entry) entries.next();
+			PenguinRace key = (PenguinRace) thisEntry.getKey();
+			ArrayList value =  (ArrayList) thisEntry.getValue();
+			if(value.size() > 0){
+				Collections.sort(value);
+			}
+		}
+		System.out.println(map);
 
 
 
