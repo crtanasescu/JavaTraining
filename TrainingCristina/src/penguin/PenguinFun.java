@@ -73,6 +73,8 @@ public class PenguinFun {
 			}
 		}
 		System.out.println(map);
+		System.out.println();
+		System.out.println();
 
 
 
@@ -81,8 +83,9 @@ public class PenguinFun {
 		//Implement a HashTable data structure that will hold penguin objects as values and their names as keys. Try to write design your own hash function.
 
 
-
-
+		MapaMutantSubAcoperire mapDesignedByMe = new MapaMutantSubAcoperire();
+		mapDesignedByMe.puneInMapa(pinguini);
+		mapDesignedByMe.afiseaza();
 
 
 		/*
