@@ -42,7 +42,7 @@ public class PenguinFun {
 		System.out.println();
 
 		Collections.sort(pinguini, new ComparatorCustom());
-		System.out.println(pinguini);   //nu ne prea putem da seama de sortarea dupa numele pinguinului initial: rar vom avea aceeasi medie de varsta
+		System.out.println(pinguini);
 		System.out.println();
 		System.out.println();
 
@@ -82,10 +82,11 @@ public class PenguinFun {
 
 		//Implement a HashTable data structure that will hold penguin objects as values and their names as keys. Try to write design your own hash function.
 
-
-		MapaMutantSubAcoperire mapDesignedByMe = new MapaMutantSubAcoperire();
-		mapDesignedByMe.puneInMapa(pinguini);
-		mapDesignedByMe.afiseaza();
+		MapaMutantSubAcoperire mapaMutantSubAcoperire = new MapaMutantSubAcoperire();
+		mapaMutantSubAcoperire.add("pinguin1", new Penguin("pinguin1",PenguinRace.AFRICAN, 3.4455d , 0, null ));
+		mapaMutantSubAcoperire.add("pinguin2", new Penguin("pinguin2",PenguinRace.AFRICAN, 3.4455d , 0, null ));
+		System.out.println(mapaMutantSubAcoperire.get("pinguin2"));
+		
 
 
 		/*

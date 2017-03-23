@@ -72,8 +72,4 @@ public class Penguin implements Comparable {
 	public int getNumberOfMatingPartners() {
 		return numberOfMatingPartners;
 	}
-
-	public void setNumberOfMatingPartners(int numberOfMatingPartners) {
-		this.numberOfMatingPartners = numberOfMatingPartners;
-	}
 }

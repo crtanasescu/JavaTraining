@@ -42,7 +42,6 @@ public class Student implements Comparable{
     }
 
 
-
     public int compareTo(Object obj)
     {
         Student s = (Student) obj;
