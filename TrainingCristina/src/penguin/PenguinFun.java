@@ -86,7 +86,7 @@ public class PenguinFun {
 		mapaMutantSubAcoperire.add("pinguin1", new Penguin("pinguin1",PenguinRace.AFRICAN, 3.4455d , 0, null ));
 		mapaMutantSubAcoperire.add("pinguin2", new Penguin("pinguin2",PenguinRace.AFRICAN, 3.4455d , 0, null ));
 		System.out.println(mapaMutantSubAcoperire.get("pinguin2"));
-		
+
 
 
 		/*
