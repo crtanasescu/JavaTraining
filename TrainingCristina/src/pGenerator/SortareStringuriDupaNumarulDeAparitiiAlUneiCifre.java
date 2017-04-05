@@ -1,5 +1,6 @@
 package pGenerator;
 
+import java.util.Collections;
 import java.util.TreeSet;
 
 /**
@@ -8,12 +9,14 @@ import java.util.TreeSet;
 public class SortareStringuriDupaNumarulDeAparitiiAlUneiCifre {
 
 
-//    public TreeSet<String> sorteaza(TreeSet<String> ts, char c) {
-//        switch (c) {
-//            case 'a':
-//
-//        }
-//    }
+    public void sorteaza(TreeSet<String> ts, char c) {
+        switch (c) {
+            case 'a':
+
+
+        }
+
+    }
 
     public int[] numaraLiterele(TreeSet<String> ts, char c) {
         int[] vectorNumarLitereDeUnAnumitFel = new int[20];
