@@ -1,7 +1,6 @@
 package pGenerator;
 
-import java.util.Collections;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Tina on 4/4/2017.
@@ -11,16 +10,19 @@ public class SortareStringuriDupaNumarulDeAparitiiAlUneiCifre {
 
     public void sorteaza(TreeSet<String> ts, char c) {
         switch (c) {
-            case 'a':
+            case 'a': sorteazaDupaLitera(numaraLitereleSiCreeazaMap(ts, 'a'), 'a'); break;
+            case 'b': sorteazaDupaLitera(numaraLitereleSiCreeazaMap(ts, 'b'), 'b'); break;
+            case 'c': sorteazaDupaLitera(numaraLitereleSiCreeazaMap(ts, 'c'), 'c'); break;
+            case 'd': sorteazaDupaLitera(numaraLitereleSiCreeazaMap(ts, 'd'), 'd'); break;
+            case 'x': System.exit(0);
 
-
+            default:
+                System.out.println("Aceasta optiune de sortare nu exista! Pentru iesire apasati x.");
         }
-
     }
 
-    public int[] numaraLiterele(TreeSet<String> ts, char c) {
-        int[] vectorNumarLitereDeUnAnumitFel = new int[20];
-        int aux =0;
+    private HashMap<Integer, ArrayList<String>> numaraLitereleSiCreeazaMap(TreeSet<String> ts, char c) {
+        HashMap<Integer, ArrayList<String>> tineEvidenta = new HashMap<Integer, ArrayList<String>>();
         for (String s : ts) {
             char[] charVector = s.toCharArray();
             int contor = 0;
@@ -29,17 +31,38 @@ public class SortareStringuriDupaNumarulDeAparitiiAlUneiCifre {
                     contor ++;
                 }
             }
-            vectorNumarLitereDeUnAnumitFel[aux++] = contor;
+
+            ArrayList<String> listaStringuri = tineEvidenta.get(contor);
+
+            if (listaStringuri == null) {
+                listaStringuri = new ArrayList<String>();
+            }
+
+            listaStringuri.add(s);
+            tineEvidenta.put(contor, listaStringuri);
         }
-        return vectorNumarLitereDeUnAnumitFel;
+        return tineEvidenta;
     }
 
-    public void afiseaza(int[] a){
-        System.out.print( "[ " );
-        for(int i=0; i<a.length; i++){
-            System.out.print( a[i] + " ");
+
+
+    private void sorteazaDupaLitera(HashMap<Integer, ArrayList<String> > hm, char c) {
+        for (int i = 7; i >= 0; i--) {
+            ArrayList<String> value = hm.get(i);
+            if(value != null){
+                Collections.sort(value);
+                System.out.println();
+                System.out.println("String-urile care contin litera " + c + " de " + i + " ori sunt: ");
+                afisare(value);
+            }
         }
-        System.out.println("]");
+    }
+
+    private void afisare( ArrayList<String> a){
+        for(String s : a){
+            System.out.print(s + "   ");
+        }
+
     }
 
 }
