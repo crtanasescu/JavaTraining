@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.geometry;
+package pJUnitSiExceptii.ex2geometry;
 
 /**
  * Created by Tina on 4/24/2017.

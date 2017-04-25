@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.gradinaZoo;
+package pJUnitSiExceptii.ex1gradinaZoo;
 
 import org.junit.Assert;
 import org.junit.Before;

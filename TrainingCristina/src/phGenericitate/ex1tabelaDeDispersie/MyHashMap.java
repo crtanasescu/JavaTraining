@@ -1,4 +1,4 @@
-package phGenericitate;
+package phGenericitate.ex1tabelaDeDispersie;
 
 import homework3.homeworkLab3.exercise6.Array;
 
@@ -10,6 +10,34 @@ import java.util.Iterator;
  * Created by Tina on 4/24/2017.
  */
 public class MyHashMap {
+    HashMap<Integer,ArrayList<String> > hashMap;
+
+    public MyHashMap() {
+        hashMap = new HashMap<Integer, ArrayList<String>>();
+    }
+
+    public void put(Entry entry){
+        ArrayList <String> listaDeValori = hashMap.get(entry.cheie);
+
+            if(listaDeValori == null){
+                listaDeValori = new ArrayList<String>();
+            }
+
+            listaDeValori.add(entry.valoare);
+            hashMap.put(entry.cheie, listaDeValori);
+
+        }
+    }
+
+
+//
+//    Iterator it = hashMap.entrySet().iterator();
+//        while(it.hasNext()){
+//                Entry thisEntry = (Entry) it.next();
+//                int cheie = thisEntry.cheie;
+//                String valoare = thisEntry.valoare;
+
+
 //    ArrayList<String> listaDeValori = new ArrayList<String>();
 //
 //    public MyHashMap() {
@@ -29,7 +57,7 @@ public class MyHashMap {
 //    }
 //
 //
-//    public void put(phGenericitate.Entry entry) {
+//    public void put(phGenericitate.ex1tabelaDeDispersie.Entry entry) {
 //        ArrayList<Entry> listaDeEntryuri = listaDeValori.get()
 //        if(hashMap == null){
 //            hashMap = new HashMap();
@@ -37,4 +65,4 @@ public class MyHashMap {
 //
 //        put(entry.cheie, entry.valoare);
 //    }
-}
+

@@ -1,4 +1,4 @@
-package phGenericitate;
+package phGenericitate.ex1tabelaDeDispersie;
 
 import penguin.Penguin;
 
@@ -14,4 +14,11 @@ public class Entry {
         this.valoare = valoare;
     }
 
+    @Override
+    public String toString() {
+        return "Entry{" +
+                "cheie=" + cheie +
+                ", valoare='" + valoare + '\'' +
+                '}';
+    }
 }

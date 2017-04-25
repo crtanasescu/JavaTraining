@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.geometry;
+package pJUnitSiExceptii.ex2geometry;
 
 import org.junit.Assert;
 import org.junit.Before;

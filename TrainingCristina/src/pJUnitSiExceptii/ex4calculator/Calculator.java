@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.calculator;
+package pJUnitSiExceptii.ex4calculator;
 
 import java.nio.BufferOverflowException;
 import java.nio.BufferUnderflowException;

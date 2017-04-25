@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.calculator;
+package pJUnitSiExceptii.ex5executieFinally;
 
 /**
  * Created by Tina on 4/25/2017.

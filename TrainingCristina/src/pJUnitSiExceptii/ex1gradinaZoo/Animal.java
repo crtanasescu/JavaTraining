@@ -1,4 +1,4 @@
-package pJUnitSiExceptii.gradinaZoo;
+package pJUnitSiExceptii.ex1gradinaZoo;
 
 /**
  * Created by Tina on 4/24/2017.
