@@ -9,7 +9,7 @@ import java.util.Iterator;
 /**
  * Created by Tina on 4/24/2017.
  */
-public class MyHashMap {
+public class MyHashMap implements Iterable{
     HashMap<Integer,ArrayList<String> > hashMap;
 
     public MyHashMap() {
@@ -19,15 +19,46 @@ public class MyHashMap {
     public void put(Entry entry){
         ArrayList <String> listaDeValori = hashMap.get(entry.cheie);
 
-            if(listaDeValori == null){
-                listaDeValori = new ArrayList<String>();
-            }
-
-            listaDeValori.add(entry.valoare);
-            hashMap.put(entry.cheie, listaDeValori);
-
+        if(listaDeValori == null){
+            listaDeValori = new ArrayList<String>();
         }
+
+        listaDeValori.add(entry.valoare);
+        hashMap.put(entry.cheie, listaDeValori);
     }
+
+    public Object get(int key) {
+        Iterator entries = hashMap.entrySet().iterator();
+        while (entries.hasNext()) {
+            HashMap.Entry thisEntry = (HashMap.Entry) entries.next();
+            Integer cheie = (Integer) thisEntry.getKey();
+            ArrayList value =  (ArrayList) thisEntry.getValue();
+            if(cheie == key){
+                return value;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "hashMap=" + hashMap +
+                '}';
+    }
+
+    public Iterator iterator() {
+        return null;
+    }
+
+//    public void afisareTabela(HashMap hashMap){
+//        for(Entry e : hashMap){
+//            System.out.println(e);
+//        }
+//    }
+}
+
+
+
 
 
 //

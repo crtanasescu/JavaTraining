@@ -4,6 +4,7 @@ package pJUnitSiExceptii.ex2geometry;
  * Created by Tina on 4/24/2017.
  */
 public class GeometricForms {
+
     String name;
 
     public GeometricForms(String name) {

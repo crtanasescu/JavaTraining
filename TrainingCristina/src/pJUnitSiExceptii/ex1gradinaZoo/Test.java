@@ -30,14 +30,14 @@ public class Test {
         zoo.addAnimal(new Animal("maimuta", 7));
         zoo.removeAnimal(zoo.getAnimal(0));
 
-        assertTrue(zoo.size() == 0);
+        Assert.assertTrue(zoo.size() == 0);
     }
 
     @org.junit.Test
     public void testAreAnimalsInZoo(){
         zoo.addAnimal(new Animal("lebada", 1));
         if(!zoo.areAnimals()){
-            fail();
+            fail("Nu exista animale in zoo");
         }
     }
 
@@ -46,7 +46,7 @@ public class Test {
         zoo.addAnimal(new Animal("urs", 5));
         zoo.addAnimal(new Animal("lup", 6));
 
-        //???????
+        //??????? asta trebuie sa cada dar nu sunt sigura cum se foloseste mai exact assertFalse
         Assert.assertFalse("Nu sunt animale" , zoo.areAnimals());
     }
 

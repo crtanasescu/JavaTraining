@@ -21,4 +21,5 @@ public class Entry {
                 ", valoare='" + valoare + '\'' +
                 '}';
     }
+
 }

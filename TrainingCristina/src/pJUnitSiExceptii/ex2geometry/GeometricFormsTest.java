@@ -18,7 +18,6 @@ public class GeometricFormsTest {
          form1 = new GeometricForms("TRIANGLE");
          form2 = new GeometricForms("CIRCLE");
          form3 = new GeometricForms("RECTANGLE");
-
     }
 
     @Test

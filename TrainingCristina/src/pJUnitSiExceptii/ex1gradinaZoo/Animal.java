@@ -4,9 +4,8 @@ package pJUnitSiExceptii.ex1gradinaZoo;
  * Created by Tina on 4/24/2017.
  */
 public class Animal {
-
-    String nume;
-    int varsta;
+     private String nume;
+     private int varsta;
 
     public Animal(String nume, int varsta) {
         this.nume = nume;

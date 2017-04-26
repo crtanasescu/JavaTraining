@@ -17,7 +17,7 @@ public class Zoo {
     }
 
     public void removeAnimal (Animal a){
-        for(int i = 0; i< animale.size(); i++) {
+        for(int i = 0; i < animale.size(); i++) {
             if (animale.get(i).equals(a)) {
                 animale.remove(i);
             }

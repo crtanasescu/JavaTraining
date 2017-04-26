@@ -6,6 +6,6 @@ package pJUnitSiExceptii.ex5executieFinally;
 public class MainForFinally {
     public static void main(String[] args) {
         ExecutiaBloculuiFinallyCuReturn executiaBloculuiFinallyCuReturn = new ExecutiaBloculuiFinallyCuReturn();
-        executiaBloculuiFinallyCuReturn.metoda();
+        System.out.println(executiaBloculuiFinallyCuReturn.metoda());
     }
 }

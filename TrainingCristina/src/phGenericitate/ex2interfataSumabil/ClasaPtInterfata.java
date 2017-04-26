@@ -6,6 +6,11 @@ package phGenericitate.ex2interfataSumabil;
 public class ClasaPtInterfata  implements Sumabil{
 
     int valoareCurenta;
+
+    public ClasaPtInterfata(int valoareCurenta) {
+        this.valoareCurenta = valoareCurenta;
+    }
+
     public void addValue(Sumabil value) {
 
     }

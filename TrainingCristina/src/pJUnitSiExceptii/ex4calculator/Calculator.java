@@ -9,6 +9,11 @@ import java.util.ArrayList;
  */
 public class Calculator {
 
+    /*
+    Care este alegerea firească: excepţii checked sau unchecked? De ce?
+    Exceptiile checked deoarece in urma acestora programul isi poate reveni si utilizatorul poate folosi calculatorul in continuare.
+     */
+
     public int add(int a, int b)  {
         try {
             return a + b;
@@ -26,9 +31,9 @@ public class Calculator {
     }
 
     public int average(ArrayList<Integer> a){
-        int sum =0;
-       for(int i=0; i<a.size(); i++){
-           add(sum, a.get(i));
+        int sum =0, i=0;
+       for( i=0; i< a.size(); i++){
+           sum = add(sum, a.get(i));
        }
        return divide(sum,a.size());
     }
