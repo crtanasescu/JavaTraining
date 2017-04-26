@@ -12,16 +12,18 @@ public class Main {
         zoo.addAnimal(new Animal("leu", 2));
         zoo.getAnimals();
 
-        zoo.removeAnimal(zoo.getAnimal(2));
-        System.out.println(zoo.areAnimals());
-        System.out.println(zoo.size());
-
-        zoo.removeAnimal(zoo.getAnimal(1));
-        zoo.removeAnimal(zoo.getAnimal(0));
+        zoo.removeAnimal(new Animal("girafa", 3));
         zoo.getAnimals();
-        System.out.println( zoo.areAnimals());
 
-        System.out.println(zoo.size());
+//        System.out.println(zoo.areAnimals());
+//        System.out.println(zoo.size());
+//
+//        zoo.removeAnimal(zoo.getAnimal(1));
+//        zoo.removeAnimal(zoo.getAnimal(0));
+//        zoo.getAnimals();
+//        System.out.println( zoo.areAnimals());
+//
+//        System.out.println(zoo.size());
 
 
     }

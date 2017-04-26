@@ -35,4 +35,15 @@ public class Animal {
                 ", varsta=" + varsta +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Animal an = (Animal) o;
+        if((this.nume).equals(an.nume) && this.varsta == an.varsta){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

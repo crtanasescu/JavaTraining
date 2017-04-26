@@ -1,12 +1,13 @@
 package pJUnitSiExceptii.ex1gradinaZoo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Tina on 4/24/2017.
  */
 public class Zoo {
-    ArrayList<Animal> animale ;
+    List<Animal> animale ;
 
     public Zoo() {
         animale = new ArrayList<Animal>();
@@ -17,11 +18,7 @@ public class Zoo {
     }
 
     public void removeAnimal (Animal a){
-        for(int i = 0; i < animale.size(); i++) {
-            if (animale.get(i).equals(a)) {
-                animale.remove(i);
-            }
-        }
+        animale.remove(a);
     }
 
     public boolean areAnimals(){
@@ -31,14 +28,14 @@ public class Zoo {
         return true;
     }
 
-    public void getAnimals(){
+    public List<Animal> getAnimals(){
         if(!areAnimals()){
             System.out.println("Nu exista niciun animal momentan.");
+            return null;
         }else {
             System.out.println("Gradina zoologica cuprinde urmatoarele animale: ");
-            for (int i = 0; i < animale.size(); i++) {
-                System.out.println(animale.get(i));
-            }
+            System.out.println(animale);
+            return this.animale;
         }
     }
 
@@ -48,6 +45,10 @@ public class Zoo {
 
     public int size(){
         return animale.size();
+    }
+
+    public boolean containsAnimal(Animal a){
+        return animale.contains(a);
     }
 
 }

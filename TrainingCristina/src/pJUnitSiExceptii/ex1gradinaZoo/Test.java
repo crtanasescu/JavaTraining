@@ -22,15 +22,15 @@ public class Test {
         Animal animalDeAdaugat = new Animal("cal salbatic", 6);
         zoo.addAnimal(animalDeAdaugat);
 
-        Assert.assertEquals(zoo.getAnimal(0),animalDeAdaugat);
+        Assert.assertTrue(zoo.containsAnimal(animalDeAdaugat));
     }
 
     @org.junit.Test
     public void testRemoveAnimal(){
         zoo.addAnimal(new Animal("maimuta", 7));
-        zoo.removeAnimal(zoo.getAnimal(0));
+        zoo.removeAnimal(new Animal("maimuta", 7));
 
-        Assert.assertTrue(zoo.size() == 0);
+        Assert.assertFalse(zoo.areAnimals());
     }
 
     @org.junit.Test
@@ -46,8 +46,6 @@ public class Test {
         zoo.addAnimal(new Animal("urs", 5));
         zoo.addAnimal(new Animal("lup", 6));
 
-        //??????? asta trebuie sa cada dar nu sunt sigura cum se foloseste mai exact assertFalse
-        Assert.assertFalse("Nu sunt animale" , zoo.areAnimals());
+        Assert.assertFalse("Nu exista animale in zoo" , !zoo.areAnimals());
     }
-
 }

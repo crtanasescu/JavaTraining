@@ -14,6 +14,7 @@ public class SOError {
     }
 
     public static void main(String args[]) {
+
         try {
             endless();
         } catch(StackOverflowError t) {
