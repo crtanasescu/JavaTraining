@@ -64,7 +64,7 @@ public class Main {
         gr.add(new Student("Cristina Marinescu", 9.9f));
 
         ArrayList<Integer> keys = new ArrayList<Integer>(gr.keySet());
-        Collections.sort(keys, new ComparatorPentruMedii());
+
         System.out.println(keys);
         System.out.println(gr);
         System.out.println();
