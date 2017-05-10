@@ -18,7 +18,8 @@ public class ComparatorPeTreeSet implements Comparator<String> {
             int i = getNumarDeAparitii(o2) - getNumarDeAparitii(o1);
             if( i != 0 ){
                 return i;
-            }else{
+            }
+            else {
                 return i+1;
             }
         }

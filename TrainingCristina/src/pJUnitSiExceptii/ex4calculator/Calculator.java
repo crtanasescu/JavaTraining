@@ -31,7 +31,7 @@ public class Calculator {
     }
 
     public int average(ArrayList<Integer> a){
-        int sum =0, i=0;
+        int sum =0, i;
        for( i=0; i< a.size(); i++){
            sum = add(sum, a.get(i));
        }
