@@ -10,8 +10,8 @@ public class ExecutiaBloculuiFinallyCuReturn {
         int sum = 0;
         try{
             for(int i=0; i<10; i++){
-                //sum = values[i] + values[i+1];
-                sum = sum + values[i];
+                sum = values[i] + values[i+1];
+                //sum = sum + values[i];
             }
             return sum;
         }catch(IndexOutOfBoundsException e){

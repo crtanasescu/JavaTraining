@@ -25,7 +25,7 @@ public class Test {
 
     @org.junit.Test
     public void testDivideMethod(){
-        int catul = calculator.divide(6,3);
+        int catul = calculator.divide(6,0);
 
         Assert.assertEquals(catul, 2);
     }
@@ -39,6 +39,7 @@ public class Test {
         int media = calculator.average(lista);
 
         Assert.assertEquals(media, 2);
+
     }
 
 

@@ -1,5 +1,7 @@
 package phGenericitate.ex1tabelaDeDispersie;
 
+import java.util.HashMap;
+
 /**
  * Created by Tina on 4/24/2017.
  */

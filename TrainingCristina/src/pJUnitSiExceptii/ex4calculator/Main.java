@@ -10,7 +10,8 @@ public class Main {
 
         Calculator calculator = new Calculator();
 
-        System.out.println(calculator.add(999999999,999999999));
+        System.out.println(calculator.add(Integer.MIN_VALUE , -1));
+        System.out.println(calculator.add(Integer.MAX_VALUE - 1, 5));
         System.out.println(calculator.divide(6,2));
 
         ArrayList<Integer> nisteIntregi = new ArrayList<Integer>();

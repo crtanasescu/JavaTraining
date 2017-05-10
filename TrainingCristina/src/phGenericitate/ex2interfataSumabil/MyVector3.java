@@ -7,7 +7,7 @@ public class MyVector3 implements Sumabil {
     int numRows;
     int numColumns;
 
-    int[][][] vectorCu3Coordonate = new int[numRows][numColumns][3];
+    int[][][] vectorCu3Coordonate = new int[3][numRows][numColumns];
 
     public void addValue(Sumabil value) {
 

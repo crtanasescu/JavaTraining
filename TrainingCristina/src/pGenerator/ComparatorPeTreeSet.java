@@ -20,7 +20,7 @@ public class ComparatorPeTreeSet implements Comparator<String> {
                 return i;
             }
             else {
-                return i+1;
+                return 0;
             }
         }
 
