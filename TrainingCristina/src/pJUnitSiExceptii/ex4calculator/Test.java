@@ -3,6 +3,8 @@ package pJUnitSiExceptii.ex4calculator;
 import org.junit.Assert;
 import org.junit.Before;
 
+import java.nio.BufferOverflowException;
+import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 
 /**
@@ -16,30 +18,25 @@ public class Test {
         calculator = new Calculator();
     }
 
-    @org.junit.Test
-    public void testAddMethod(){
-        int suma = calculator.add(4,5);
-
-        Assert.assertEquals(suma, 9);
+    @org.junit.Test(expected=BufferUnderflowException.class)
+    public void testAddMethodForUnderflow(){
+         calculator.add(Integer.MIN_VALUE , -1);
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected= BufferOverflowException.class)
+    public void testAddMethodForOverflow(){
+        calculator.add(Integer.MAX_VALUE , 1);
+    }
+
+    @org.junit.Test(expected = ArithmeticException.class)
     public void testDivideMethod(){
-        int catul = calculator.divide(6,0);
-
-        Assert.assertEquals(catul, 2);
+       calculator.divide(6,0);
     }
 
-    @org.junit.Test
+    @org.junit.Test(expected = ArithmeticException.class)
     public void testAverageMethod(){
         ArrayList<Integer> lista = new ArrayList<Integer>();
-        lista.add(2);
-        lista.add(3);
-        lista.add(1);
-        int media = calculator.average(lista);
-
-        Assert.assertEquals(media, 2);
-
+       calculator.average(lista);
     }
 
 
