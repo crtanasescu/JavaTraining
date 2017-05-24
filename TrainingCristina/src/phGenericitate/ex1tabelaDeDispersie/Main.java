@@ -15,6 +15,7 @@ public class Main {
         Entry entry4 = new Entry(2, "maricela");
 
 
+
         //System.out.println(entry1);
 
         myHashMap.put(entry1);
@@ -28,6 +29,12 @@ public class Main {
 
         System.out.println(myHashMap.get(2));
         System.out.println(myHashMap.get(1));
+
+
+        Entry entry5 = new Entry(new Student("ana", 1),"Ana");
+        myHashMap.put(entry5);
+        System.out.println(myHashMap);
+
 
 
 

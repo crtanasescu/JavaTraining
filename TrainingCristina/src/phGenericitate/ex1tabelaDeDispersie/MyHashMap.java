@@ -75,21 +75,6 @@ public class MyHashMap<K,V> implements Iterable{
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MyHashMap<?, ?> myHashMap = (MyHashMap<?, ?>) o;
-
-        return hashMap != null ? hashMap.equals(myHashMap.hashMap) : myHashMap.hashMap == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
     public Iterator iterator() {
         return null;
     }
