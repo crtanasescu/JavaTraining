@@ -36,7 +36,7 @@ public class Test {
     @org.junit.Test(expected = ArithmeticException.class)
     public void testAverageMethod(){
         ArrayList<Integer> lista = new ArrayList<Integer>();
-       calculator.average(lista);
+        calculator.average(lista);
     }
 
 

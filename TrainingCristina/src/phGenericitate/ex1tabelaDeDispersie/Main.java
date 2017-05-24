@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class Main {
     public static void main(String[] args) {
-        MyHashMap myHashMap = new MyHashMap();
+        MyHashMap<Integer,String> myHashMap = new MyHashMap();
 
         Entry entry1 = new Entry(1,"Ana");
         Entry entry2 = new Entry(2, "b");
@@ -31,9 +31,10 @@ public class Main {
         System.out.println(myHashMap.get(1));
 
 
+        MyHashMap<Student,String> hashMap2 = new MyHashMap();
         Entry entry5 = new Entry(new Student("ana", 1),"Ana");
-        myHashMap.put(entry5);
-        System.out.println(myHashMap);
+        hashMap2.put(entry5);
+        System.out.println(hashMap2);
 
 
 

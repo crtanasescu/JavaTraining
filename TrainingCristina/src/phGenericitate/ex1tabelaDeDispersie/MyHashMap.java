@@ -12,14 +12,13 @@ import java.util.Map;
  */
 public class MyHashMap<K,V> implements Iterable{
     Map<K,V> hashMap;
-   // ArrayList<Entry> entries;
 
     public MyHashMap() {
         hashMap = new HashMap <K,V>();
     }
 
     public void put(Entry entry){
-        hashMap.put((K)entry.K, (V)entry.V);
+        hashMap.put((K)entry.k, (V)entry.v);
     }
 
     public V get(K key){
@@ -27,9 +26,8 @@ public class MyHashMap<K,V> implements Iterable{
         while (entries.hasNext()) {
             HashMap.Entry thisEntry = (HashMap.Entry) entries.next();
             K cheie = (K) thisEntry.getKey();
-            V value =  (V) thisEntry.getValue();
             if(cheie == key){
-                return value;
+                return (V) thisEntry.getValue();
             }
         }
         return null;

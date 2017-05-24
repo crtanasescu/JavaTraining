@@ -6,19 +6,19 @@ import penguin.Penguin;
  * Created by Ciprian on 3/23/2017.
  */
 public class Entry <K,V> {
-    K K;
-    V V;
+    K k;
+    V v;
 
     public Entry(K cheie, V valoare) {
-        this.K = cheie;
-        this.V = valoare;
+        this.k = cheie;
+        this.v = valoare;
     }
 
     @Override
     public String toString() {
         return "Entry{" +
-                "cheie=" + K +
-                ", valoare='" + V + '\'' +
+                "cheie=" + k +
+                ", valoare='" + v + '\'' +
                 '}';
     }
 
