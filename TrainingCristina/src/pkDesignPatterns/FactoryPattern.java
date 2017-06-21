@@ -10,7 +10,7 @@ public class FactoryPattern {
 
     public FactoryPattern() {
          mappingLetterToNumber = new MappingLetterToNumber();
-        mappingNumberToLetter = new MappingNumberToLetter();
+         mappingNumberToLetter = new MappingNumberToLetter();
     }
 
 
