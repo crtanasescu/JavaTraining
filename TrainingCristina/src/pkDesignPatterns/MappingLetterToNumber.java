@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by crtanasescu on 6/19/2017.
  */
 public class MappingLetterToNumber {
-    Map <Character, Integer> mapa = new HashMap<Character, Integer>();
+    private Map <Character, Integer> mapa = new HashMap<Character, Integer>();
 
 
     public MappingLetterToNumber() {

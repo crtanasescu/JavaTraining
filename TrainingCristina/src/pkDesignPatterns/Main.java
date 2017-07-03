@@ -24,14 +24,14 @@ public class Main {
 
 
         MappingLetterToNumber mappingLetterToNumber = new MappingLetterToNumber();
-        System.out.println(mappingLetterToNumber.mapa);
-        System.out.println(mappingLetterToNumber.mapa.get('A'));
-        System.out.println(mappingLetterToNumber.mapa.get('B'));
-        System.out.println(mappingLetterToNumber.mapa.get('C'));
-        System.out.println(mappingLetterToNumber.mapa.get('D'));
-        System.out.println(mappingLetterToNumber.mapa.get('X'));
-        System.out.println(mappingLetterToNumber.mapa.get('Y'));
-        System.out.println(mappingLetterToNumber.mapa.get('Z'));
+
+        System.out.println(mappingLetterToNumber.get('A'));
+        System.out.println(mappingLetterToNumber.get('B'));
+        System.out.println(mappingLetterToNumber.get('C'));
+        System.out.println(mappingLetterToNumber.get('D'));
+        System.out.println(mappingLetterToNumber.get('X'));
+        System.out.println(mappingLetterToNumber.get('Y'));
+        System.out.println(mappingLetterToNumber.get('Z'));
 
 
 
@@ -44,7 +44,9 @@ public class Main {
         System.out.println(factoryPattern.decriptare(27));
 
 
-
+        MappingNumberToLetter mappingNumberToLetter = new MappingNumberToLetter();
+        System.out.println(mappingNumberToLetter.get(1));
+        System.out.println(mappingNumberToLetter.get(26));
 
     }
 }
